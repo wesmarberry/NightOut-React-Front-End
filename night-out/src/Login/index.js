@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route, Switch, Link } from 'react-router-dom';
 
 
 class Login extends Component {
@@ -75,6 +76,9 @@ class Login extends Component {
     }
   }
 
+
+
+
   
 
   render() {
@@ -82,11 +86,14 @@ class Login extends Component {
     
 
     return(
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.handleChange}/><br/>
-          <input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange}/><br/>
-          <input type="submit" value="Log In" />
-        </form>
+        <div>
+          <form onSubmit={this.handleSubmit}>
+            <input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.handleChange}/><br/>
+            <input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange}/><br/>
+            <input type="submit" value="Log In" />
+          </form>
+          <Link to='/register'>Register</Link>
+        </div>
       )
     
   }
