@@ -130,7 +130,17 @@ class NewNightForm extends Component {
 
 
   acceptNight = () => {
-    
+
+    this.setState({
+        distance: '',
+        type: [],
+        priceLevel: [],
+        previousId: '',
+        foundActivities: [],
+        showAccept: false
+    })
+    this.props.resetPage()
+
   }
   
   declineNight = async (arrToRemove) => {
@@ -273,7 +283,7 @@ class NewNightForm extends Component {
 
         )
     } else {
-      display = <AcceptScreen foundActivities={this.state.foundActivities} declineNight={this.declineNight}/>
+      display = <AcceptScreen foundActivities={this.state.foundActivities} declineNight={this.declineNight} acceptNight={this.acceptNight}/>
     }
 
 

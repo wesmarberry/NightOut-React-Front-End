@@ -15,6 +15,8 @@ class AcceptScreen extends Component {
 
 
 	render() {
+		console.log(this.state);
+
 		const activities = this.props.foundActivities.map((activity, i) => {
 			return (
 				<li key={i}>
@@ -31,7 +33,7 @@ class AcceptScreen extends Component {
 				<ul>
 					{activities}
 				</ul>
-
+				<button type='submit' onClick={this.props.acceptNight}>Accept Night</button>
 				<button type='submit' onClick={this.props.declineNight.bind(null, this.props.foundActivities)}></button>
 				</div>
 			</div>

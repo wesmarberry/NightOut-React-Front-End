@@ -48,7 +48,7 @@ class App extends Component {
     console.log(this.state);
     let display = '' 
     if (this.state.logged) {
-      display = <UserContainer username={this.state.username} userId={this.state.userId} email={this.state.email} resetToLogin={this.resetToLogin}/>
+      display = <UserContainer resetToLogin={this.resetToLogin} username={this.state.username} userId={this.state.userId} email={this.state.email} resetToLogin={this.resetToLogin}/>
     } else if (this.state.needToRegister) {
       display = <Register setUser={this.setUser}/>
     } else {

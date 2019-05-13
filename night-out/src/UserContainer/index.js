@@ -172,18 +172,41 @@ deleteUser = async () => {
     })
   }
 
+  resetPage = () => {
+    this.setState({
+      newActivity: false
+    })
+  }
 
   render() {
 
     console.log(this.props);
+    console.log(this.state);
+
+    const activities = this.state.userActivities.map((activity, i) => {
+      return(
+        <li>
+        Name: {activity.name}<br/>
+        Type: {activity.type}<br/>
+        <img src={activity.photoUrl}/>
+        </li>
+
+        )
+    })
+
+
+
     let display = ''
     if (this.state.newActivity) {
-      display = <NewNightForm />
+      display = <NewNightForm resetPage={this.resetPage}/>
     } else {
       display = (
         <div>
           <h1>{this.state.usernameDisplay} container displaying</h1>
           <h2>Your Previous Activities</h2>
+          <ul>
+            {activities}
+          </ul>
           {this.state.modalShowing ? <EditUser closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} userToEdit={this.state.userToEdit}/> : <button type='submit' onClick={this.showModal}>Edit User</button>} <br/>
           <button type='submit' onClick={this.showNewActivityForm}>New Night Out</button>
           <button type="submit" onClick={this.deleteUser}>Delete Account</button>
