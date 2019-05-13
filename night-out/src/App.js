@@ -32,12 +32,20 @@ class App extends Component {
     })
   }
 
+  resetToLogin = () => {
+    this.setState({
+      username: '',
+      userId: '',
+      logged: false,
+      needToRegister: false
+    })
+  }
 
   render(){
     console.log(this.state);
     let display = '' 
     if (this.state.logged) {
-      display = <UserContainer username={this.state.username} userId={this.state.userId}/>
+      display = <UserContainer username={this.state.username} userId={this.state.userId} resetToLogin={this.resetToLogin}/>
     } else if (this.state.needToRegister) {
       display = <Register setUser={this.setUser}/>
     } else {

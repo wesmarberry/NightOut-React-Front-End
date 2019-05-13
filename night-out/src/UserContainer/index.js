@@ -49,7 +49,33 @@ class UserContainer extends Component {
 
  }
 
+deleteUser = async () => {
+  try {
 
+      const response = await fetch('http://localhost:3679/api/v1/user/' + this.props.userId, {
+        method: 'DELETE',
+        credentials: 'include', // on every request we have to send the cookie
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+
+      const parsedResponse = await response.json();
+      console.log(parsedResponse);
+
+
+
+
+      
+
+      this.props.resetToLogin()
+
+
+
+    } catch (err) {
+
+    }
+}
   
 
   render() {
@@ -60,6 +86,7 @@ class UserContainer extends Component {
         <div>
           <h1>{this.props.username} container displaying</h1>
           <h2>Your Previous Activities</h2>
+          <button type="submit" onClick={this.deleteUser}>Delete Account</button>
 
 
         </div>
