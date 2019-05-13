@@ -7,6 +7,7 @@ class Login extends Component {
     super();
     this.state = {
       username: '',
+      email: '',
       password: '',
       lat: 0,
       lng: 0
@@ -64,10 +65,11 @@ class Login extends Component {
       this.setState({
         username: parsedResponse.session.username,
         userId: parsedResponse.session.userDbId,
+        email: parsedResponse.session.email,
         logged: true
       })
 
-      this.props.setUser(this.state.username, this.state.userId, true)
+      this.props.setUser(this.state.username, this.state.userId, this.state.email, true)
       if (parsedResponse.data === 'login successful') {
         console.log('SUCCESS');
         this.props.history.push('/user')

@@ -59,16 +59,18 @@ class Register extends Component {
 
 
 
-      if (parsedResponse.data === 'login successful') {
+      if (parsedResponse.data === 'registration successful') {
+        console.log('registration successful');
 
-        this.props.history.push('/user')
       }
-      this.props.setUser(this.state.username, this.state.userId, true)
+      
       this.setState({
         username: parsedResponse.session.username,
+        email: parsedResponse.session.email,
+        userId: parsedResponse.session.userDbId,
         logged: true
       })
-
+      this.props.setUser(this.state.username, this.state.userId, this.state.email, true)
 
 
 

@@ -12,16 +12,18 @@ class App extends Component {
     this.state = {
       username: '',
       userId: '',
+      email: '',
       logged: false,
       needToRegister: false
     }
   }
 
-  setUser = (username, userId, logged) => {
+  setUser = (username, userId, email, logged) => {
     console.log('ran setUser with' + username + ' ' + userId);
     this.setState({
       username: username,
       userId: userId,
+      email: email,
       logged: logged
     })
   }
@@ -36,6 +38,7 @@ class App extends Component {
     this.setState({
       username: '',
       userId: '',
+      email: '',
       logged: false,
       needToRegister: false
     })
@@ -45,7 +48,7 @@ class App extends Component {
     console.log(this.state);
     let display = '' 
     if (this.state.logged) {
-      display = <UserContainer username={this.state.username} userId={this.state.userId} resetToLogin={this.resetToLogin}/>
+      display = <UserContainer username={this.state.username} userId={this.state.userId} email={this.state.email} resetToLogin={this.resetToLogin}/>
     } else if (this.state.needToRegister) {
       display = <Register setUser={this.setUser}/>
     } else {
