@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import EditUser from '../EditUser'
+import NewNightForm from '../NewNightForm'
 
 
 class UserContainer extends Component {
@@ -13,7 +14,8 @@ class UserContainer extends Component {
         username: ''
       },
       usernameDisplay: '',
-      modalShowing: false
+      modalShowing: false,
+      newActivity: false
     }
 
   }
@@ -164,17 +166,36 @@ deleteUser = async () => {
     }
   }
 
+  showNewActivityForm = () => {
+    this.setState({
+      newActivity: true
+    })
+  }
+
+
   render() {
 
     console.log(this.props);
-
-    return(
+    let display = ''
+    if (this.state.newActivity) {
+      display = <NewNightForm />
+    } else {
+      display = (
         <div>
           <h1>{this.state.usernameDisplay} container displaying</h1>
           <h2>Your Previous Activities</h2>
-          {this.state.modalShowing ? <EditUser closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} userToEdit={this.state.userToEdit}/> : <button type='submit' onClick={this.showModal}>Edit User</button>}
+          {this.state.modalShowing ? <EditUser closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} userToEdit={this.state.userToEdit}/> : <button type='submit' onClick={this.showModal}>Edit User</button>} <br/>
+          <button type='submit' onClick={this.showNewActivityForm}>New Night Out</button>
           <button type="submit" onClick={this.deleteUser}>Delete Account</button>
           <button type="submit" onClick={this.logout}>Log Out</button>
+        </div>
+        )
+    }
+
+
+    return(
+        <div>
+          {display}
 
 
 
