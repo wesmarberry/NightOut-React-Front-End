@@ -8,7 +8,9 @@ class NewNightForm extends Component {
       distance: '',
       type: [],
       priceLevel: [],
-      previousId: ''
+      previousId: '',
+      foundActivities: [],
+      showAccept: false
     }
 
   }
@@ -73,7 +75,6 @@ class NewNightForm extends Component {
       })
     }
     
-    console.log(this.state.type[0]);
 
   }
 
@@ -98,7 +99,11 @@ class NewNightForm extends Component {
       console.log(parsedResponse);
 
 
-
+      this.setState({
+        foundActivities: parsedResponse.data,
+        showAccept: true
+      })
+    
 
       // if (parsedResponse.data === 'registration successful') {
       //   console.log('registration successful');
@@ -128,8 +133,10 @@ class NewNightForm extends Component {
   render() {
 
     console.log(this.state);
+    let display = ''
+    if (showAccept === false) {
+      display = (
 
-    return(
         <div>
           <form onSubmit={this.handleSubmit}>
             <div className="radio-container">
@@ -213,6 +220,18 @@ class NewNightForm extends Component {
             <button type='submit'>Generate Night</button>
           </form>
         </div>
+
+
+        )
+    } else {
+      display = <AcceptNight />
+    }
+
+
+
+
+    return(
+        
       )
     
   }
