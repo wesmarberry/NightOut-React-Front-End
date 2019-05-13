@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import AcceptScreen from '../AcceptScreen';
+
 
 
 class NewNightForm extends Component {
@@ -127,14 +129,61 @@ class NewNightForm extends Component {
 
 
 
-
+  acceptNight = () => {
+    
+  }
   
+  declineNight = async (arrToRemove) => {
+    try {
+
+      const loginResponse = await fetch('http://localhost:3679/api/v1/activity/delete', {
+        method: 'DELETE',
+        credentials: 'include', // on every request we have to send the cookie
+        body: JSON.stringify(arrToRemove),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+
+      const parsedResponse = await loginResponse.json();
+      console.log(parsedResponse);
+
+
+      this.setState({
+        distance: '',
+        type: [],
+        priceLevel: [],
+        previousId: '',
+        foundActivities: [],
+        showAccept: false
+      })
+    
+
+      // if (parsedResponse.data === 'registration successful') {
+      //   console.log('registration successful');
+
+      // }
+      
+      // this.setState({
+      //   username: parsedResponse.session.username,
+      //   email: parsedResponse.session.email,
+      //   userId: parsedResponse.session.userDbId,
+      //   logged: true
+      // })
+      
+
+
+
+    } catch (err) {
+
+    }
+  }
 
   render() {
 
     console.log(this.state);
     let display = ''
-    if (showAccept === false) {
+    if (this.state.showAccept === false) {
       display = (
 
         <div>
@@ -224,14 +273,16 @@ class NewNightForm extends Component {
 
         )
     } else {
-      display = <AcceptNight />
+      display = <AcceptScreen foundActivities={this.state.foundActivities} declineNight={this.declineNight}/>
     }
 
 
 
 
     return(
-        
+      <div>
+        {display}
+      </div>
       )
     
   }
