@@ -4,25 +4,55 @@ import './App.css';
 import { Route, Switch, Link } from 'react-router-dom';
 import Login from './Login'
 import Register from './Register'
+import UserContainer from './UserContainer'
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
+      username: '',
+      userId: '',
+      logged: false,
       needToRegister: false
     }
   }
 
+  setUser = (username, userId, logged) => {
+    console.log('ran setUser with' + username + ' ' + userId);
+    this.setState({
+      username: username,
+      userId: userId,
+      logged: logged
+    })
+  }
+
+  showRegister = () => {
+    this.setState({
+      needToRegister: true
+    })
+  }
+
+
   render(){
+    console.log(this.state);
+    let display = '' 
+    if (this.state.logged) {
+      display = <UserContainer username={this.state.username} userId={this.state.userId}/>
+    } else if (this.state.needToRegister) {
+      display = <Register setUser={this.setUser}/>
+    } else {
+      display = <Login setUser={this.setUser} showRegister={this.showRegister}/>
+    }
+
+
 
     return (
       <div className="App">
-        <Switch>
-          <Route exact path="/" component={ Login } />
-          <Route exact path='/register' component={ Register } />
+          {display}
+          
           
         
-        </Switch>
+      
       </div>
     );
     

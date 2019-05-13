@@ -59,16 +59,19 @@ class Login extends Component {
 
 
 
-      if (parsedResponse.data === 'login successful') {
-
-        this.props.history.push('/user')
-      }
+      
 
       this.setState({
-        username: parsedResponse.session.username
+        username: parsedResponse.session.username,
+        userId: parsedResponse.session.userDbId,
+        logged: true
       })
 
-
+      this.props.setUser(this.state.username, this.state.userId, true)
+      if (parsedResponse.data === 'login successful') {
+        console.log('SUCCESS');
+        this.props.history.push('/user')
+      }
 
 
     } catch (err) {
@@ -92,7 +95,7 @@ class Login extends Component {
             <input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange}/><br/>
             <input type="submit" value="Log In" />
           </form>
-          <Link to='/register'>Register</Link>
+          <button onClick={this.props.showRegister}>Register</button>
         </div>
       )
     

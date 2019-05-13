@@ -63,9 +63,10 @@ class Register extends Component {
 
         this.props.history.push('/user')
       }
-
+      this.props.setUser(this.state.username, this.state.userId, true)
       this.setState({
-        username: parsedResponse.session.username
+        username: parsedResponse.session.username,
+        logged: true
       })
 
 
