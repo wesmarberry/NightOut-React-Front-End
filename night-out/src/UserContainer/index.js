@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import EditUser from '../EditUser'
 import NewNightForm from '../NewNightForm'
 import ReviewForm from '../ReviewForm'
+import ActivityContainer from '../ActivityContainer'
 
 class UserContainer extends Component {
 
@@ -15,7 +16,9 @@ class UserContainer extends Component {
       },
       usernameDisplay: '',
       modalShowing: false,
-      newActivity: false
+      newActivity: false,
+      showActivity: false,
+      ActivityToShow: ''
     }
 
   }
@@ -180,6 +183,38 @@ deleteUser = async () => {
     })
   }
 
+  showActivity = async (e) => {
+    console.log(e.currentTarget.id);
+    const id = e.currentTarget.id
+    try {
+      const response = await fetch('http://localhost:3679/api/v1/activity/' + id, {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+
+
+      })
+
+      const parsedResponse = await response.json();
+      console.log(parsedResponse);
+      
+
+      this.setState({
+        showActivity: true,
+        activityToShow: parsedResponse
+      })
+
+
+    } catch (err) {
+      console.log(err);
+    }
+
+  }
+
+
+
   render() {
 
     console.log(this.props);
@@ -187,11 +222,11 @@ deleteUser = async () => {
 
     const activities = this.state.userActivities.map((activity, i) => {
       return(
-        <li key={i}>
-        Name: {activity.name}<br/>
-        Type: {activity.type}<br/>
-        <img src={activity.photoUrl}/>
-        <ReviewForm activity={activity}/>
+        <li key={i} className='activity-li'>
+          <div className='clickable-li' onClick={this.showActivity} id={activity._id}> Name: {activity.name}</div><br/>
+          Type: {activity.type}<br/>
+          <img src={activity.photoUrl}/>
+          <ReviewForm activity={activity}/>
 
         </li>
 
@@ -203,7 +238,7 @@ deleteUser = async () => {
     let display = ''
     if (this.state.newActivity) {
       display = <NewNightForm resetPage={this.resetPage}/>
-    } else {
+    } else if (this.state.newActivity === false && this.state.showActivity === false) {
       display = (
         <div>
           <h1>{this.state.usernameDisplay} container displaying</h1>
@@ -217,6 +252,8 @@ deleteUser = async () => {
           <button type="submit" onClick={this.logout}>Log Out</button>
         </div>
         )
+    } else {
+      display = <ActivityContainer />
     }
 
 
