@@ -18,7 +18,7 @@ class UserContainer extends Component {
       modalShowing: false,
       newActivity: false,
       showActivity: false,
-      ActivityToShow: ''
+      activityToShow: ''
     }
 
   }
@@ -253,7 +253,7 @@ deleteUser = async () => {
         </div>
         )
     } else {
-      display = <ActivityContainer />
+      display = <ActivityContainer activityToShow={this.state.activityToShow}/>
     }
 
 
