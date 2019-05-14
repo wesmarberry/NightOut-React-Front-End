@@ -20,9 +20,10 @@ class UserContainer extends Component {
 
   }
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     
-     this.findAllUserActivities() 
+     await this.findAllUserActivities() 
+
      this.setState({
       userToEdit: {
         email: this.props.email,
@@ -185,7 +186,7 @@ deleteUser = async () => {
 
     const activities = this.state.userActivities.map((activity, i) => {
       return(
-        <li>
+        <li key={i}>
         Name: {activity.name}<br/>
         Type: {activity.type}<br/>
         <img src={activity.photoUrl}/>
@@ -193,7 +194,7 @@ deleteUser = async () => {
 
         )
     })
-
+    const newActivities = activities.reverse()
 
 
     let display = ''
@@ -205,7 +206,7 @@ deleteUser = async () => {
           <h1>{this.state.usernameDisplay} container displaying</h1>
           <h2>Your Previous Activities</h2>
           <ul>
-            {activities}
+            {newActivities}
           </ul>
           {this.state.modalShowing ? <EditUser closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} userToEdit={this.state.userToEdit}/> : <button type='submit' onClick={this.showModal}>Edit User</button>} <br/>
           <button type='submit' onClick={this.showNewActivityForm}>New Night Out</button>

@@ -12,7 +12,8 @@ class NewNightForm extends Component {
       priceLevel: [],
       previousId: '',
       foundActivities: [],
-      showAccept: false
+      showAccept: false,
+      message: ''
     }
 
   }
@@ -100,11 +101,16 @@ class NewNightForm extends Component {
       const parsedResponse = await loginResponse.json();
       console.log(parsedResponse);
 
-
-      this.setState({
-        foundActivities: parsedResponse.data,
-        showAccept: true
-      })
+      if (parsedResponse.data.length === 0) {
+        this.setState({
+          message: 'No results found with the specified parameters. Please Try Again'
+        })
+      } else {
+        this.setState({
+          foundActivities: parsedResponse.data,
+          showAccept: true
+        })
+      }
     
 
       // if (parsedResponse.data === 'registration successful') {
@@ -276,7 +282,9 @@ class NewNightForm extends Component {
 
 
             </div>
-            <button type='submit'>Generate Night</button>
+            <button type='submit'>Generate Night</button><br/>
+            <p>{this.state.message}</p>
+
           </form>
         </div>
 
