@@ -57,7 +57,7 @@ class UserContainer extends Component {
       
 
       this.setState({
-        userActivities: parsedResponse.data.activities
+        userActivities: parsedResponse.activities
 
       })
 

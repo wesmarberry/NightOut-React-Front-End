@@ -10,17 +10,31 @@ class ReviewForm extends Component {
       rating: '',
       userId: '',
       activityId: '',
-      activityApiId: ''
+      activityApiId: '',
+      reviewed: ''
     }
 
   }
 
   componentDidMount = () => {
-    this.setState({
+    if (this.props.activity.reviewed) {
+      this.setState({
+      body: this.props.activity.reviews[0].body,
+      rating: this.props.activity.reviews[0].rating,
       userId: this.props.activity.userId,
-      activityId: this.props.activity.activityId,
-      activityApiId: this.props.activityApiId
+      activityId: this.props.activity._id,
+      activityApiId: this.props.activity.apiId,
+      reviewed: this.props.activity.reviewed
     })
+    } else {
+      this.setState({
+        userId: this.props.activity.userId,
+        activityId: this.props.activity._id,
+        activityApiId: this.props.activity.apiId,
+        reviewed: this.props.activity.reviewed
+      })
+      
+    }
   }
 
   handleChange = (e) => {
@@ -36,20 +50,24 @@ class ReviewForm extends Component {
     console.log(this.state);
     try {
 
-      // const loginResponse = await fetch('http://localhost:3679/api/v1/user/new', {
-      //   method: 'POST',
-      //   credentials: 'include', // on every request we have to send the cookie
-      //   body: JSON.stringify(this.state),
-      //   headers: {
-      //     'Content-Type': 'application/json'
-      //   }
-      // })
+      const response = await fetch('http://localhost:3679/api/v1/activity/' + this.state.activityId + '/review', {
+        method: 'POST',
+        credentials: 'include', // on every request we have to send the cookie
+        body: JSON.stringify(this.state),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
 
-      // const parsedResponse = await loginResponse.json();
-      // console.log(parsedResponse);
+      const parsedResponse = await response.json();
+      console.log(parsedResponse);
 
-      
 
+      this.setState({
+        body: parsedResponse.data.body,
+        rating: Number(parsedResponse.data.rating),
+        reviewed: true
+      })
 
       
 
@@ -79,14 +97,19 @@ class ReviewForm extends Component {
 
   render() {
 
-    
-
-    return(
-        <div>
-          <form onSubmit={this.handleSubmit}>
+    console.log(this.props.activity);
+    let display = ''
+    if (this.state.reviewed) {
+      display = (<div>
+        <p>{this.state.body}</p><br/>
+        <p>Rating: {this.state.rating}</p>
+      </div>)
+    } else {
+      display = (<form onSubmit={this.handleSubmit}>
+            <h2>Review</h2>
             <input type="text" name="body" placeholder="Review Activity" value={this.state.body} onChange={this.handleChange}/><br/>
            <div className="radio-container">
-                <h2>Review</h2>
+                
                 <input type='radio' id='0' name='rating' value='0' onChange={this.handleChange}/>
                 <label for='0'>0</label>
                 <input type='radio' id='1' name='rating' value='1' onChange={this.handleChange}/>
@@ -101,7 +124,12 @@ class ReviewForm extends Component {
                 <label for='5'>5</label>
             </div>
             <input type="submit" value="Review" />
-          </form>
+          </form>)
+    }
+
+    return(
+        <div>
+          {display}
         </div>
       )
     
