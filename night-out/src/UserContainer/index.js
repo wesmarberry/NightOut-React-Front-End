@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import EditUser from '../EditUser'
 import NewNightForm from '../NewNightForm'
-
+import ReviewForm from '../ReviewForm'
 
 class UserContainer extends Component {
 
@@ -58,6 +58,7 @@ class UserContainer extends Component {
 
       this.setState({
         userActivities: parsedResponse.data.activities
+
       })
 
 
@@ -190,6 +191,8 @@ deleteUser = async () => {
         Name: {activity.name}<br/>
         Type: {activity.type}<br/>
         <img src={activity.photoUrl}/>
+        <ReviewForm activity={activity}/>
+
         </li>
 
         )
