@@ -45,6 +45,7 @@ class App extends Component {
   }
 
   render(){
+
     console.log(this.state);
     let display = '' 
     if (this.state.logged) {

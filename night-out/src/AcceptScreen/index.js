@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import CoolMap from '../Map'
 
 
 class AcceptScreen extends Component {
@@ -37,6 +37,7 @@ class AcceptScreen extends Component {
 				<button type='submit' onClick={this.props.acceptNight}>Accept Night</button>
 				<button type='submit' onClick={this.props.declineNight.bind(null, this.props.foundActivities)}></button>
 				</div>
+				<CoolMap activityLocations={this.props.foundActivities}/>
 			</div>
 
 			)
