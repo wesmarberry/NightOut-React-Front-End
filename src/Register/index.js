@@ -86,7 +86,12 @@ class Register extends Component {
 
   render() {
 
-    
+        let display = ''
+        if (this.state.lat !== 0) {
+          display = <input type="submit" value="Register" />
+        } else {
+          display = <p>...Getting Your Location...<br/>*Location Services Must be Enabled to Enable Registration</p>
+        }
 
     return(
         <div>
@@ -94,7 +99,7 @@ class Register extends Component {
             <input type="text" name="email" placeholder="email" value={this.state.email} onChange={this.handleChange}/><br/>
             <input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.handleChange}/><br/>
             <input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange}/><br/>
-            <input type="submit" value="Register" />
+            {display}
           </form>
         </div>
       )

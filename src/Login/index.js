@@ -87,15 +87,19 @@ class Login extends Component {
   
 
   render() {
-
-    
+        let display = ''
+        if (this.state.lat !== 0) {
+          display = <input type="submit" value="Log In" />
+        } else {
+          display = <p>...Getting Your Location...<br/>*Location Services Must be Enabled to Access Login</p>
+        }
 
     return(
         <div>
           <form onSubmit={this.handleSubmit}>
             <input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.handleChange}/><br/>
             <input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange}/><br/>
-            <input type="submit" value="Log In" />
+            {display}
           </form>
           <button onClick={this.props.showRegister}>Register</button>
         </div>

@@ -241,7 +241,7 @@ class NewNightForm extends Component {
               <input type='radio' className='t1' id='Restaurant1' name='type1' value='restaurant' onChange={this.handleChange}/>
               <label for='Restaurant1'>Restaurant</label>
               <input type='text' className='t1' id='Other1' name='type1' value={this.state.type[0]} onChange={this.handleChange}/>
-              <label for='Other1'>Other</label>
+              <label for='Other'>Other</label>
 
 
             </div>

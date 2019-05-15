@@ -77,7 +77,11 @@ class CoolMap extends Component {
           key={i} 
           name={activity.name} 
           position={activity.location}
-          
+          icon={{
+            url: 'http://www.clker.com/cliparts/c/I/g/P/d/h/google-maps-pin-blue.svg',
+            anchor: new this.props.google.maps.Point(32,32),
+            scaledSize: new this.props.google.maps.Size(64,64)
+          }}
           onClick={this.onMarkerClick}
 
         />
@@ -96,11 +100,7 @@ class CoolMap extends Component {
           zoom={this.state.zoom}
           google={this.props.google}
           style={{width: '40%', height: ""}}
-          icon={{
-            url: 'https://icon2.kisspng.com/20180403/caq/kisspng-google-map-maker-google-maps-computer-icons-openst-map-marker-5ac30986b07bc7.8541015415227313987229.jpg',
-            anchor: new this.props.google.maps.Point(32,32),
-            scaledSize: new this.props.google.maps.Size(64,64)
-          }}
+          
           onClick={this.onMapClicked}
         >
         <Marker 
@@ -115,7 +115,7 @@ class CoolMap extends Component {
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
             <div>
-              <h1>{this.state.selectedPlace.name}</h1>
+              <p>{this.state.selectedPlace.name}</p>
             </div>
         </InfoWindow>
           

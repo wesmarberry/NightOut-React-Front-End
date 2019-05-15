@@ -20,6 +20,7 @@ class AcceptScreen extends Component {
 		const activities = this.props.foundActivities.map((activity, i) => {
 			return (
 				<li key={i}>
+				<h2>Activity {i + 1}</h2>
 				Name: {activity.name}<br/>
 				Type of Place: {activity.type}<br/>
 				$$ Level: {activity.price_level}<br/>

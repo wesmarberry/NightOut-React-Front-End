@@ -180,6 +180,7 @@ deleteUser = async () => {
   }
 
   resetPage = () => {
+    this.findAllUserActivities()
     this.setState({
       newActivity: false
     })
@@ -239,24 +240,29 @@ deleteUser = async () => {
 
 
     let display = ''
-    if (this.state.newActivity) {
-      display = <NewNightForm resetPage={this.resetPage}/>
-    } else if (this.state.newActivity === false && this.state.showActivity === false) {
-      display = (
-        <div>
-          <h1>{this.state.usernameDisplay} container displaying</h1>
-          <h2>Your Previous Activities</h2>
-          <ul>
-            {newActivities}
-          </ul>
-          {this.state.modalShowing ? <EditUser closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} userToEdit={this.state.userToEdit}/> : <button type='submit' onClick={this.showModal}>Edit User</button>} <br/>
-          <button type='submit' onClick={this.showNewActivityForm}>New Night Out</button>
-          <button type="submit" onClick={this.deleteUser}>Delete Account</button>
-          <button type="submit" onClick={this.logout}>Log Out</button>
-        </div>
-        )
+    if (this.state.usernameDisplay === '') {
+      display = ''
     } else {
-      display = <ActivityContainer activityToShow={this.state.activityToShow} session={this.state.session}/>
+      if (this.state.newActivity) {
+        display = <NewNightForm resetPage={this.resetPage}/>
+      } else if (this.state.newActivity === false && this.state.showActivity === false) {
+        display = (
+          <div>
+            <h1>{this.state.usernameDisplay} container displaying</h1>
+            <h2>Your Previous Activities</h2>
+            <ul>
+              {newActivities}
+            </ul>
+            {this.state.modalShowing ? <EditUser closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} userToEdit={this.state.userToEdit}/> : <button type='submit' onClick={this.showModal}>Edit User</button>} <br/>
+            <button type='submit' onClick={this.showNewActivityForm}>New Night Out</button>
+            <button type="submit" onClick={this.deleteUser}>Delete Account</button>
+            <button type="submit" onClick={this.logout}>Log Out</button>
+          </div>
+          )
+      } else {
+        display = <ActivityContainer activityToShow={this.state.activityToShow} session={this.state.session}/>
+      }
+      
     }
 
 
