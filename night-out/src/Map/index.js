@@ -4,22 +4,54 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
  
 class CoolMap extends Component {
-  static defaultProps = {
-    center: {
-      lat: 41.8781,
-      lng: -87.6298
-    },
-    zoom: 1
-  };
   constructor(){
     super()
       this.state = {
         showingInfoWindow: false,
         activeMarker: {},
         selectedPlace: {},
+        userLat: '',
+        userLng: '',
+        zoom: 12
       };
   }
  
+  componentDidMount = () => {
+    console.log(this.props);
+    this.setState({
+      userLat: this.props.session.lat,
+      userLng: this.props.session.lng
+    })
+  }
+
+  // getSession = async () => {
+  //   try {
+
+  //     const response = await fetch('http://localhost:3679/api/v1/user/getInfo', {
+  //       method: 'GET',
+  //       credentials: 'include', // on every request we have to send the cookie
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       }
+  //     })
+
+  //     const parsedResponse = await response.json();
+  //     console.log(parsedResponse);
+
+      
+
+
+      
+
+
+    
+
+
+  //   } catch (err) {
+
+  //   }
+  // }
+
   onMarkerClick = (props, marker, e) =>
     this.setState({
       selectedPlace: props,
@@ -60,16 +92,20 @@ class CoolMap extends Component {
       <div style={{ height: '100vh', width: '100%' }}>
         <Map
           bootstrapURLKeys={{ key: process.env.REACT_APP_API_KEY}}
-          initialCenter={this.props.center}
-          zoom={this.props.zoom}
+          initialCenter={{lat: this.props.session.lat, lng: this.props.session.lng}}
+          zoom={this.state.zoom}
           google={this.props.google}
           style={{width: '40%', height: ""}}
-          
+          icon={{
+            url: 'https://icon2.kisspng.com/20180403/caq/kisspng-google-map-maker-google-maps-computer-icons-openst-map-marker-5ac30986b07bc7.8541015415227313987229.jpg',
+            anchor: new this.props.google.maps.Point(32,32),
+            scaledSize: new this.props.google.maps.Size(64,64)
+          }}
           onClick={this.onMapClicked}
         >
         <Marker 
-          name='Home Location' 
-          position={{lat:41.8781, lng:-87.6298}}
+          name='Your Location' 
+          position={{lat: this.state.userLat, lng:this.state.userLng}}
           
           onClick={this.onMarkerClick}
 

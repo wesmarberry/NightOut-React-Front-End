@@ -13,7 +13,8 @@ class NewNightForm extends Component {
       previousId: '',
       foundActivities: [],
       showAccept: false,
-      message: ''
+      message: '',
+      session: ''
     }
 
   }
@@ -108,7 +109,8 @@ class NewNightForm extends Component {
       } else {
         this.setState({
           foundActivities: parsedResponse.data,
-          showAccept: true
+          showAccept: true,
+          session: parsedResponse.session
         })
       }
     
@@ -291,7 +293,7 @@ class NewNightForm extends Component {
 
         )
     } else {
-      display = <AcceptScreen foundActivities={this.state.foundActivities} declineNight={this.declineNight} acceptNight={this.acceptNight}/>
+      display = <AcceptScreen foundActivities={this.state.foundActivities} declineNight={this.declineNight} acceptNight={this.acceptNight} session={this.state.session}/>
     }
 
 
