@@ -44,7 +44,7 @@ class Register extends Component {
     console.log(this.state);
     try {
 
-      const loginResponse = await fetch('http://localhost:3679/api/v1/user/register', {
+      const loginResponse = await fetch(process.env.REACT_APP_API_CALL + 'user/register', {
         method: 'POST',
         credentials: 'include', // on every request we have to send the cookie
         body: JSON.stringify(this.state),

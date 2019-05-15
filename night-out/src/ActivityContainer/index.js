@@ -55,6 +55,7 @@ class ActivityContainer extends Component {
 				<ul>
 					{renderReviews}
 				</ul>
+				<CoolMap activityLocations={this.props.activityToShow} session={this.props.session}/>
 				</div>
 			</div>
 

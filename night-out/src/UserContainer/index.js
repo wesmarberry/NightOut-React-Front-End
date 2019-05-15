@@ -43,7 +43,7 @@ class UserContainer extends Component {
    
     try {
 
-      const response = await fetch('http://localhost:3679/api/v1/user/' + this.props.userId, {
+      const response = await fetch(process.env.REACT_APP_API_CALL + 'user/' + this.props.userId, {
         method: 'GET',
         credentials: 'include', // on every request we have to send the cookie
         headers: {
@@ -75,7 +75,7 @@ class UserContainer extends Component {
 deleteUser = async () => {
   try {
 
-      const response = await fetch('http://localhost:3679/api/v1/user/' + this.props.userId, {
+      const response = await fetch(process.env.REACT_APP_API_CALL + 'user/' + this.props.userId, {
         method: 'DELETE',
         credentials: 'include', // on every request we have to send the cookie
         headers: {
@@ -103,7 +103,7 @@ deleteUser = async () => {
   logout = async () => {
     try {
 
-      const response = await fetch('http://localhost:3679/api/v1/user/logout', {
+      const response = await fetch(process.env.REACT_APP_API_CALL + 'user/logout', {
         method: 'GET',
         credentials: 'include', // on every request we have to send the cookie
         headers: {
@@ -145,7 +145,7 @@ deleteUser = async () => {
     e.preventDefault();
 
     try {
-      const updatedUser = await fetch('http://localhost:3679/api/v1/user/' + this.props.userId + '/edit', {
+      const updatedUser = await fetch(process.env.REACT_APP_API_CALL + 'user/' + this.props.userId + '/edit', {
         method: 'PUT',
         body: JSON.stringify(this.state.userToEdit),
         headers: {
@@ -187,7 +187,7 @@ deleteUser = async () => {
     console.log(e.currentTarget.id);
     const id = e.currentTarget.id
     try {
-      const response = await fetch('http://localhost:3679/api/v1/activity/' + id, {
+      const response = await fetch(process.env.REACT_APP_API_CALL + 'activity/' + id, {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -203,7 +203,8 @@ deleteUser = async () => {
 
       this.setState({
         showActivity: true,
-        activityToShow: parsedResponse
+        activityToShow: parsedResponse,
+
       })
 
 
@@ -253,7 +254,7 @@ deleteUser = async () => {
         </div>
         )
     } else {
-      display = <ActivityContainer activityToShow={this.state.activityToShow}/>
+      display = <ActivityContainer activityToShow={this.state.activityToShow} />
     }
 
 
