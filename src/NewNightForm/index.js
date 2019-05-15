@@ -100,13 +100,15 @@ class NewNightForm extends Component {
       })
 
       const parsedResponse = await loginResponse.json();
-      console.log(parsedResponse);
+      console.log(parsedResponse.status);
 
       if (parsedResponse.data.length === 0) {
+        console.log('running error');
         this.setState({
           message: 'No results found with the specified parameters. Please Try Again'
         })
       } else {
+        console.log('running set state');
         this.setState({
           foundActivities: parsedResponse.data,
           showAccept: true,
@@ -173,7 +175,8 @@ class NewNightForm extends Component {
         priceLevel: [],
         previousId: '',
         foundActivities: [],
-        showAccept: false
+        showAccept: false,
+        message: ''
       })
     
 
@@ -237,8 +240,8 @@ class NewNightForm extends Component {
               <label for='Bar1'>Bar</label>
               <input type='radio' className='t1' id='Restaurant1' name='type1' value='restaurant' onChange={this.handleChange}/>
               <label for='Restaurant1'>Restaurant</label>
-              <input type='radio' className='t1' id='Other1' name='type1' value='other' onChange={this.handleChange}/>
-              <label for='Other1'>other</label>
+              <input type='text' className='t1' id='Other1' name='type1' value={this.state.type[0]} onChange={this.handleChange}/>
+              <label for='Other1'>Other</label>
 
 
             </div>
@@ -258,8 +261,8 @@ class NewNightForm extends Component {
               <label for='Bar2'>Bar</label>
               <input type='radio' className='t2' id='Restaurant2' name='type2' value='restaurant' onChange={this.handleChange}/>
               <label for='Restaurant2'>Restaurant</label>
-              <input type='radio' className='t2' id='Other2' name='type2' value='other' onChange={this.handleChange}/>
-              <label for='Other2'>other</label>
+              <input type='text' className='t2' id='Other2' name='type2' value={this.state.type[1]} onChange={this.handleChange}/>
+              <label for='Other2'>Other</label>
 
 
             </div>
@@ -279,8 +282,8 @@ class NewNightForm extends Component {
               <label for='Bar3'>Bar</label>
               <input type='radio' className='t3' id='Restaurant3' name='type3' value='restaurant' onChange={this.handleChange}/>
               <label for='Restaurant3'>Restaurant</label>
-              <input type='radio' className='t3' id='Other3' name='type3' value='other' onChange={this.handleChange}/>
-              <label for='Other3'>other</label>
+              <input type='text' className='t3' id='Other3' name='type3' value={this.state.type[2]} onChange={this.handleChange}/>
+              <label for='Other3'>Other</label>
 
 
             </div>
