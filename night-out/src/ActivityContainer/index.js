@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import CoolMap from '../Map'
 
 
 class ActivityContainer extends Component {
