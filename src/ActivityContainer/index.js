@@ -16,7 +16,12 @@ class ActivityContainer extends Component {
 		for (let i = 0; i < reviews.length; i++) {
 			overallNum += Number(reviews[i].rating)
 		}
-		return (overallNum / reviews.length)
+		if (overallNum === 0) {
+			return 'No Reviews'
+		} else {
+			
+			return (overallNum / reviews.length)
+		}
 	}
 
 
@@ -44,6 +49,7 @@ class ActivityContainer extends Component {
 
 		return(
 			<div>
+				<p onClick={this.props.resetPage}>Home</p>
 				<div>
 				<h2>Overall Rating: {this.findOverallRating(reviews)}</h2>
 				<h1>{this.props.activityToShow.data.name}</h1>

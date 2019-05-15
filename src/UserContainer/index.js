@@ -180,9 +180,12 @@ deleteUser = async () => {
   }
 
   resetPage = () => {
+    console.log('ran resetPage');
     this.findAllUserActivities()
     this.setState({
-      newActivity: false
+      modalShowing: false,
+      newActivity: false,
+      showActivity: false
     })
   }
 
@@ -260,7 +263,7 @@ deleteUser = async () => {
           </div>
           )
       } else {
-        display = <ActivityContainer activityToShow={this.state.activityToShow} session={this.state.session}/>
+        display = <ActivityContainer activityToShow={this.state.activityToShow} session={this.state.session} resetPage={this.resetPage}/>
       }
       
     }
