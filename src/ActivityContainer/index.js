@@ -21,8 +21,8 @@ class ActivityContainer extends Component {
 
 
 	render() {
-		console.log(this.props.activityToShow);
-
+		console.log(this.props.session);
+		const activityForMap = [this.props.activityToShow.data]
 		const reviews = []
 
 		for (let i = 0; i < this.props.activityToShow.matchingActivityData.length; i++) {
@@ -55,7 +55,7 @@ class ActivityContainer extends Component {
 				<ul>
 					{renderReviews}
 				</ul>
-				<CoolMap activityLocations={this.props.activityToShow} session={this.props.session}/>
+				<CoolMap activityLocations={activityForMap} session={this.props.session}/>
 				</div>
 			</div>
 

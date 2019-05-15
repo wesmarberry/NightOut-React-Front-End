@@ -18,7 +18,8 @@ class UserContainer extends Component {
       modalShowing: false,
       newActivity: false,
       showActivity: false,
-      activityToShow: ''
+      activityToShow: '',
+      session: ''
     }
 
   }
@@ -35,7 +36,7 @@ class UserContainer extends Component {
       usernameDisplay: this.props.username
 
      })
-     console.log(this.props);
+
 
   }
 
@@ -52,7 +53,7 @@ class UserContainer extends Component {
       })
 
       const parsedResponse = await response.json();
-      console.log(parsedResponse);
+
 
 
 
@@ -60,7 +61,8 @@ class UserContainer extends Component {
       
 
       this.setState({
-        userActivities: parsedResponse.activities
+        userActivities: parsedResponse.activities,
+        session: parsedResponse.session
 
       })
 
@@ -218,7 +220,7 @@ deleteUser = async () => {
 
   render() {
 
-    console.log(this.props);
+
     console.log(this.state);
 
     const activities = this.state.userActivities.map((activity, i) => {
@@ -254,7 +256,7 @@ deleteUser = async () => {
         </div>
         )
     } else {
-      display = <ActivityContainer activityToShow={this.state.activityToShow} />
+      display = <ActivityContainer activityToShow={this.state.activityToShow} session={this.state.session}/>
     }
 
 

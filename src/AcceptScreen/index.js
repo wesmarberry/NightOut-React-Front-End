@@ -22,7 +22,7 @@ class AcceptScreen extends Component {
 				<li key={i}>
 				Name: {activity.name}<br/>
 				Type of Place: {activity.type}<br/>
-				$$ Levle: {activity.price_level}<br/>
+				$$ Level: {activity.price_level}<br/>
 				Address: {activity.address}
 				</li>
 				)
