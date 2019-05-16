@@ -93,13 +93,13 @@ class CoolMap extends Component {
 
     return (
       // Important! Always set the container height explicitly
-      <div style={{ height: '100vh', width: '100%' }}>
+      <div className='centerDiv'>
         <Map
           bootstrapURLKeys={{ key: process.env.REACT_APP_API_KEY}}
           initialCenter={{lat: this.props.session.lat, lng: this.props.session.lng}}
           zoom={this.state.zoom}
           google={this.props.google}
-          style={{width: '40%', height: ""}}
+          style={{width: '80%', height: "300px", left: '10%'}}
           
           onClick={this.onMapClicked}
         >

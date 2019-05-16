@@ -23,6 +23,55 @@
   color: #61dafb;
 }
 
+body {
+  background: url('https://wallpaperaccess.com/full/413721.jpg');
+  color: #cc6600;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.centerDiv {
+  display: flex;
+  justify-content: center;
+}
+
+.activityList {
+  list-style: none;
+}
+
+.description {
+  margin-top: -20px;
+}
+
+.reviewP {
+  margin-bottom: -35px;
+}
+
+.activity-li p {
+  margin-bottom: -10px;
+}
+
+.activity-li {
+/*  display: flex;
+  justify-content: space-between;*/
+  margin-left: -20px;
+
+}
+
+.reviewedData {
+  word-wrap: break-word;
+}
+
+.overflowContainer {
+  height: 200px;
+  width: 80%;
+  overflow: auto;
+  border-radius: 10px;
+  box-shadow: 5px 5px black;
+  background-color: #6B7A8F;
+/*  display: flex;
+  justify-content: center;*/
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

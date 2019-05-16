@@ -100,13 +100,13 @@ class ReviewForm extends Component {
     console.log(this.props.activity);
     let display = ''
     if (this.state.reviewed) {
-      display = (<div>
-        <p>{this.state.body}</p><br/>
-        <p>Rating: {this.state.rating}</p>
+      display = (<div className='reviewedData'>
+        <p className='reviewP'>"{this.state.body}"</p>
+        <p className=''>Rating: {this.state.rating}</p>
+        <p>-----------------------</p>
       </div>)
     } else {
-      display = (<form onSubmit={this.handleSubmit}>
-            <h2>Review</h2>
+      display = (<form className='reviewForm' onSubmit={this.handleSubmit}>
             <input type="text" name="body" placeholder="Review Activity" value={this.state.body} onChange={this.handleChange}/><br/>
            <div className="radio-container">
                 
@@ -123,7 +123,7 @@ class ReviewForm extends Component {
                 <input type='radio' id='5' name='rating' value='5' onChange={this.handleChange}/>
                 <label for='5'>5</label>
             </div>
-            <input type="submit" value="Review" />
+            <input type="submit" value="Submit Review" />
           </form>)
     }
 

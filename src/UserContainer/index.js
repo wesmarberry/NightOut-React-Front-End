@@ -230,9 +230,10 @@ deleteUser = async () => {
     const activities = this.state.userActivities.map((activity, i) => {
       return(
         <li key={i} className='activity-li'>
-          <div className='clickable-li' onClick={this.showActivity} id={activity._id}> Name: {activity.name}</div><br/>
-          Type: {activity.type}<br/>
-          <img src={activity.photoUrl}/>
+          <div>
+            <p className='clickable-li' onClick={this.showActivity} id={activity._id}> Name: {activity.name}</p>
+            <p>Type: {activity.type}</p><br/>
+          </div>
           <ReviewForm activity={activity}/>
 
         </li>
@@ -251,11 +252,17 @@ deleteUser = async () => {
       } else if (this.state.newActivity === false && this.state.showActivity === false) {
         display = (
           <div>
-            <h1>{this.state.usernameDisplay} container displaying</h1>
-            <h2>Your Previous Activities</h2>
-            <ul>
-              {newActivities}
-            </ul>
+            <h1 className='header'>GoOut!</h1>
+            <p className='description'>Decide Where You're Going Now</p>
+            <h2>{this.state.usernameDisplay}</h2>
+            <h4>Experiences Going Out</h4>
+            <div className='centerDiv'>
+              <div className='overflowContainer'>
+                <ul className='activityList'>
+                  {newActivities}
+                </ul>
+              </div>  
+            </div>
             {this.state.modalShowing ? <EditUser closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} userToEdit={this.state.userToEdit}/> : <button type='submit' onClick={this.showModal}>Edit User</button>} <br/>
             <button type='submit' onClick={this.showNewActivityForm}>New Night Out</button>
             <button type="submit" onClick={this.deleteUser}>Delete Account</button>

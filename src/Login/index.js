@@ -96,6 +96,9 @@ class Login extends Component {
 
     return(
         <div>
+
+          <h1 className='header'>GoOut!</h1>
+          <p className='description'>Decide Where You're Going Now</p>
           <form onSubmit={this.handleSubmit}>
             <input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.handleChange}/><br/>
             <input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange}/><br/>
