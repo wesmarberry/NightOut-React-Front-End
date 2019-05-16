@@ -248,7 +248,7 @@ deleteUser = async () => {
       display = ''
     } else {
       if (this.state.newActivity) {
-        display = <NewNightForm resetPage={this.resetPage}/>
+        display = <NewNightForm resetPage={this.resetPage} userId={this.props.userId}/>
       } else if (this.state.newActivity === false && this.state.showActivity === false) {
         display = (
           <div>

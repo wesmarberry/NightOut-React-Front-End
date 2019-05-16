@@ -9,6 +9,7 @@ class Login extends Component {
       username: '',
       email: '',
       password: '',
+      userId: '',
       lat: 0,
       lng: 0
     }

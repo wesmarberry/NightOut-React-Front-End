@@ -14,13 +14,16 @@ class NewNightForm extends Component {
       foundActivities: [],
       showAccept: false,
       message: '',
-      session: ''
+      session: '',
+      userId: ''
     }
 
   }
 
   componentDidMount = () => {
-    
+    this.setState({
+      userId: this.props.userId
+    })
     
   }
   
