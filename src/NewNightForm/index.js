@@ -157,6 +157,8 @@ class NewNightForm extends Component {
   }
   
   declineNight = async (arrToRemove) => {
+    const userId = this.props.userId
+    console.log(userId);
     try {
 
       const loginResponse = await fetch(process.env.REACT_APP_API_CALL + 'activity/delete', {
@@ -300,7 +302,7 @@ class NewNightForm extends Component {
 
         )
     } else {
-      display = <AcceptScreen foundActivities={this.state.foundActivities} declineNight={this.declineNight} acceptNight={this.acceptNight} session={this.state.session} position={this.props.position}/>
+      display = <AcceptScreen foundActivities={this.state.foundActivities} declineNight={this.declineNight} acceptNight={this.acceptNight} session={this.state.session} position={this.props.position} userId={this.props.userId}/>
     }
 
 
