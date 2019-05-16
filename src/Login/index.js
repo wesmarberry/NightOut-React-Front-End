@@ -11,7 +11,8 @@ class Login extends Component {
       password: '',
       userId: '',
       lat: 0,
-      lng: 0
+      lng: 0,
+      message: ''
     }
 
   }
@@ -62,19 +63,26 @@ class Login extends Component {
 
 
       
-
-      this.setState({
-        username: parsedResponse.session.username,
-        userId: parsedResponse.session.userDbId,
-        email: parsedResponse.session.email,
-        logged: true
-      })
-
-      this.props.setUser(this.state.username, this.state.userId, this.state.email, true, this.state.lat, this.state.lng)
-      if (parsedResponse.data === 'login successful') {
-        console.log('SUCCESS');
-        this.props.history.push('/user')
+      if (parsedResponse.data === 'username or password is incorrect') {
+        this.setState({
+          message: parsedResponse.data
+        })
+      } else if (parsedResponse.data === "username or password does not exist") {
+        this.setState({
+          message: parsedResponse.data
+        })
+      } else {
+        this.setState({
+          username: parsedResponse.session.username,
+          userId: parsedResponse.session.userDbId,
+          email: parsedResponse.session.email,
+          logged: true
+        })
+        this.props.setUser(this.state.username, this.state.userId, this.state.email, true, this.state.lat, this.state.lng)
+        
       }
+
+     
 
 
     } catch (err) {
@@ -106,6 +114,7 @@ class Login extends Component {
             {display}
           </form>
           <button onClick={this.props.showRegister}>Register</button>
+          <p className='redMessage'>{this.state.message}</p>
         </div>
       )
     
