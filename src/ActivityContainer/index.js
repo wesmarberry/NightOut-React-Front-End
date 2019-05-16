@@ -19,7 +19,7 @@ class ActivityContainer extends Component {
 		if (overallNum === 0) {
 			return 'No Reviews'
 		} else {
-			
+
 			return (overallNum / reviews.length)
 		}
 	}
@@ -61,7 +61,7 @@ class ActivityContainer extends Component {
 				<ul>
 					{renderReviews}
 				</ul>
-				<CoolMap activityLocations={activityForMap} session={this.props.session}/>
+				<CoolMap activityLocations={activityForMap} session={this.props.session} position={this.props.position}/>
 				</div>
 			</div>
 

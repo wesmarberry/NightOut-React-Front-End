@@ -96,7 +96,7 @@ class CoolMap extends Component {
       <div className='centerDiv'>
         <Map
           bootstrapURLKeys={{ key: process.env.REACT_APP_API_KEY}}
-          initialCenter={{lat: this.props.session.lat, lng: this.props.session.lng}}
+          initialCenter={this.props.position}
           zoom={this.state.zoom}
           google={this.props.google}
           style={{width: '80%', height: "300px", left: '10%'}}
@@ -105,7 +105,7 @@ class CoolMap extends Component {
         >
         <Marker 
           name='Your Location' 
-          position={{lat: this.state.userLat, lng:this.state.userLng}}
+          position={this.props.position}
           
           onClick={this.onMarkerClick}
 

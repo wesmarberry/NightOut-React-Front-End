@@ -270,7 +270,7 @@ deleteUser = async () => {
           </div>
           )
       } else {
-        display = <ActivityContainer activityToShow={this.state.activityToShow} session={this.state.session} resetPage={this.resetPage}/>
+        display = <ActivityContainer activityToShow={this.state.activityToShow} session={this.state.session} resetPage={this.resetPage} position={this.props.position}/>
       }
       
     }

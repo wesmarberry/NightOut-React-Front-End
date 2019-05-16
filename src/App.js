@@ -14,17 +14,22 @@ class App extends Component {
       userId: '',
       email: '',
       logged: false,
-      needToRegister: false
+      needToRegister: false,
+      position: ''
     }
   }
 
-  setUser = (username, userId, email, logged) => {
+  setUser = (username, userId, email, logged, lat, lng) => {
     console.log('ran setUser with' + username + ' ' + userId);
     this.setState({
       username: username,
       userId: userId,
       email: email,
-      logged: logged
+      logged: logged,
+      position: {
+        lat: lat,
+        lng: lng
+      }
     })
   }
 
@@ -49,7 +54,7 @@ class App extends Component {
     console.log(this.state);
     let display = '' 
     if (this.state.logged) {
-      display = <UserContainer resetToLogin={this.resetToLogin} username={this.state.username} userId={this.state.userId} email={this.state.email} resetToLogin={this.resetToLogin}/>
+      display = <UserContainer resetToLogin={this.resetToLogin} username={this.state.username} userId={this.state.userId} email={this.state.email} resetToLogin={this.resetToLogin} position={this.state.position}/>
     } else if (this.state.needToRegister) {
       display = <Register setUser={this.setUser}/>
     } else {

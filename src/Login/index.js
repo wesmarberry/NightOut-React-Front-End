@@ -70,7 +70,7 @@ class Login extends Component {
         logged: true
       })
 
-      this.props.setUser(this.state.username, this.state.userId, this.state.email, true)
+      this.props.setUser(this.state.username, this.state.userId, this.state.email, true, this.state.lat, this.state.lng)
       if (parsedResponse.data === 'login successful') {
         console.log('SUCCESS');
         this.props.history.push('/user')
