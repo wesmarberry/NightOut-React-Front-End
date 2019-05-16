@@ -78,10 +78,9 @@ class CoolMap extends Component {
           name={activity.name} 
           position={activity.location}
           icon={{
-            url: 'http://www.clker.com/cliparts/c/I/g/P/d/h/google-maps-pin-blue.svg',
-            anchor: new this.props.google.maps.Point(32,32),
-            scaledSize: new this.props.google.maps.Size(64,64)
+            url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
           }}
+          style={{'z-index': '5'}}
           onClick={this.onMarkerClick}
 
         />

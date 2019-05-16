@@ -300,7 +300,7 @@ class NewNightForm extends Component {
 
         )
     } else {
-      display = <AcceptScreen foundActivities={this.state.foundActivities} declineNight={this.declineNight} acceptNight={this.acceptNight} session={this.state.session}/>
+      display = <AcceptScreen foundActivities={this.state.foundActivities} declineNight={this.declineNight} acceptNight={this.acceptNight} session={this.state.session} position={this.props.position}/>
     }
 
 
