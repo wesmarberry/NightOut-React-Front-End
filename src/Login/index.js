@@ -105,7 +105,6 @@ class Login extends Component {
             <input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange}/><br/>
             {display}
           </form>
-          <p>{this.state.lat}</p>
           <button onClick={this.props.showRegister}>Register</button>
         </div>
       )
