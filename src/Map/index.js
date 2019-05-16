@@ -89,13 +89,10 @@ class CoolMap extends Component {
         
       
     })
-    console.log(markers);
-
-    return (
-      <div>
-      <p>{this.props.activityLocations[0].location.lat}</p>
- 
-      <div className='centerDiv'>
+    let display = '';
+    if (this.props.activityLocations.length === 1) {
+      
+      display = <div className='centerDiv'>
         <Map
           bootstrapURLKeys={{ key: process.env.REACT_APP_API_KEY}}
           initialCenter={this.props.position}
@@ -112,7 +109,16 @@ class CoolMap extends Component {
           onClick={this.onMarkerClick}
 
         />
-        {markers}
+        <Marker 
+          name={this.props.activityLocations[0].name}
+          position={this.props.activityLocations[0].location}
+          icon={{
+            url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+          }}
+          style={{'z-index': '5'}}
+          onClick={this.onMarkerClick}
+        />
+        
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
@@ -124,6 +130,119 @@ class CoolMap extends Component {
         </Map>
         <p>{this.props.activityLocations.location}</p>
       </div>
+      } else if (this.props.activityLocations.length === 2) {
+        
+      display = <div className='centerDiv'>
+        <Map
+          bootstrapURLKeys={{ key: process.env.REACT_APP_API_KEY}}
+          initialCenter={this.props.position}
+          zoom={this.state.zoom}
+          google={this.props.google}
+          style={{width: '80%', height: "300px", left: '10%'}}
+          
+          onClick={this.onMapClicked}
+        >
+        <Marker 
+          name='Your Location' 
+          position={this.props.position}
+          
+          onClick={this.onMarkerClick}
+
+        />
+        <Marker 
+          name={this.props.activityLocations[0].name}
+          position={this.props.activityLocations[0].location}
+          icon={{
+            url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+          }}
+          style={{'z-index': '5'}}
+          onClick={this.onMarkerClick}
+        />
+        <Marker 
+          name={this.props.activityLocations[1].name}
+          position={this.props.activityLocations[1].location}
+          icon={{
+            url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+          }}
+          style={{'z-index': '5'}}
+          onClick={this.onMarkerClick}
+        />
+        <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}>
+            <div>
+              <p>{this.state.selectedPlace.name}</p>
+            </div>
+        </InfoWindow>
+          
+        </Map>
+        <p>{this.props.activityLocations.location}</p>
+      </div>
+      } else if (this.props.activityLocations.length === 3) {
+    
+ 
+      display = <div className='centerDiv'>
+        <Map
+          bootstrapURLKeys={{ key: process.env.REACT_APP_API_KEY}}
+          initialCenter={this.props.position}
+          zoom={this.state.zoom}
+          google={this.props.google}
+          style={{width: '80%', height: "300px", left: '10%'}}
+          
+          onClick={this.onMapClicked}
+        >
+        <Marker 
+          name='Your Location' 
+          position={this.props.position}
+          
+          onClick={this.onMarkerClick}
+
+        />
+        <Marker 
+          name={this.props.activityLocations[0].name}
+          position={this.props.activityLocations[0].location}
+          icon={{
+            url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+          }}
+          style={{'z-index': '5'}}
+          onClick={this.onMarkerClick}
+        />
+        <Marker 
+          name={this.props.activityLocations[1].name}
+          position={this.props.activityLocations[1].location}
+          icon={{
+            url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+          }}
+          style={{'z-index': '5'}}
+          onClick={this.onMarkerClick}
+        />
+        <Marker 
+          name={this.props.activityLocations[2].name}
+          position={this.props.activityLocations[2].location}
+          icon={{
+            url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+          }}
+          style={{'z-index': '5'}}
+          onClick={this.onMarkerClick}
+        />
+        <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}>
+            <div>
+              <p>{this.state.selectedPlace.name}</p>
+            </div>
+        </InfoWindow>
+          
+        </Map>
+        <p>{this.props.activityLocations.location}</p>
+      </div>
+      }
+
+    console.log(markers);
+
+    return (
+      <div>
+        {display}
       </div>
     );
   }
