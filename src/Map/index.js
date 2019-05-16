@@ -69,7 +69,8 @@ class CoolMap extends Component {
   };
 
   render() {
-    console.log(this.props);
+    console.log('========================');
+    console.log(this.props.activityLocations[0].location.lat);
     const markers = this.props.activityLocations.map((activity, i) => {
       return(
 
@@ -91,7 +92,9 @@ class CoolMap extends Component {
     console.log(markers);
 
     return (
-      // Important! Always set the container height explicitly
+      <div>
+      <p>{this.props.activityLocations[0].location.lat}</p>
+ 
       <div className='centerDiv'>
         <Map
           bootstrapURLKeys={{ key: process.env.REACT_APP_API_KEY}}
@@ -119,7 +122,8 @@ class CoolMap extends Component {
         </InfoWindow>
           
         </Map>
-       
+        <p>{this.props.activityLocations.location}</p>
+      </div>
       </div>
     );
   }
