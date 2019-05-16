@@ -68,6 +68,7 @@ body {
   border-radius: 10px;
   box-shadow: 5px 5px black;
   background-color: #6B7A8F;
+  -webkit-overflow-scrolling: touch;
 /*  display: flex;
   justify-content: center;*/
 }
