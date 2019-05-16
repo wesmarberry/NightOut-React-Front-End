@@ -57,6 +57,18 @@ body {
 
 }
 
+.loginButtonContainer {
+  margin-top: 15px;
+}
+
+.loginForm input {
+  margin-bottom: 10px;
+}
+
+.loginButtonContainer button {
+  padding-right: 5px;
+}
+
 #acceptButtonContainer {
   margin-bottom: 20px;
 }
@@ -163,7 +175,7 @@ label {
 }
 
 .overflowContainer {
-  height: 200px;
+  height: 300px;
   width: 80%;
   overflow: scroll;
   border-radius: 10px;

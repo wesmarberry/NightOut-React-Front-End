@@ -125,7 +125,7 @@ class ReviewForm extends Component {
                 <input type='radio' id='5' name='rating' value='5' onChange={this.handleChange}/>
                 <label for='5'>5</label>
             </div>
-            <input type="submit" value="Submit Review" />
+            <input className='largeButton' type="submit" value="Submit Review" />
           </form>)
     }
 

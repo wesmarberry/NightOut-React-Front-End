@@ -56,7 +56,7 @@ class App extends Component {
     if (this.state.logged) {
       display = <UserContainer resetToLogin={this.resetToLogin} username={this.state.username} userId={this.state.userId} email={this.state.email} resetToLogin={this.resetToLogin} position={this.state.position}/>
     } else if (this.state.needToRegister) {
-      display = <Register setUser={this.setUser}/>
+      display = <Register setUser={this.setUser} resetToLogin={this.resetToLogin}/>
     } else {
       display = <Login setUser={this.setUser} showRegister={this.showRegister}/>
     }

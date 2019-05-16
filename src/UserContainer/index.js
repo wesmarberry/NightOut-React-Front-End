@@ -269,7 +269,7 @@ deleteUser = async () => {
                 </ul>
               </div>  
             </div>
-            <button className='newOutButton' type='submit' onClick={this.showNewActivityForm}>Go Out Again</button>
+            <button className='newOutButton' type='submit' onClick={this.showNewActivityForm}>Go Out Now!</button>
             
           </div>
           )

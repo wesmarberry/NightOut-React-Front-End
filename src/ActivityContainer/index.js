@@ -39,7 +39,7 @@ class ActivityContainer extends Component {
 		const renderReviews = reviews.map((review, i) => {
 			return(
 				<li key={i}>
-					{review.body} - {review.username}<br/>
+					"{review.body}" - {review.username}<br/>
 					Rating: {review.rating}<br/>
 				</li>
 

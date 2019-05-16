@@ -98,9 +98,9 @@ class Login extends Component {
   render() {
         let display = ''
         if (this.state.lat !== 0) {
-          display = <input type="submit" value="Log In" />
+          display = <input className='largeButton' type="submit" value="Log In" />
         } else {
-          display = <p className='redMessage'>...Getting Your Location...<br/>*Location Services Must be Enabled to Access Login</p>
+          display = <p className='redMessage'>...Getting Your Location...<br/>*Location Services Must be Enabled to Access Login<br/></p>
         }
 
     return(
@@ -108,12 +108,15 @@ class Login extends Component {
 
           <h1 className='header'>GoOut!</h1>
           <p className='description'>Decide Where You're Going Now</p>
-          <form onSubmit={this.handleSubmit}>
+          <form className='loginForm' onSubmit={this.handleSubmit}>
             <input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.handleChange}/><br/>
             <input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange}/><br/>
-            {display}
+            <div className='loginButtonContainer'>
+              {display}
+              <button className ='largeButton' onClick={this.props.showRegister}>Register</button>
+            </div>
           </form>
-          <button onClick={this.props.showRegister}>Register</button>
+          
           <p className='redMessage'>{this.state.message}</p>
         </div>
       )
