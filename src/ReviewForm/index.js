@@ -11,7 +11,8 @@ class ReviewForm extends Component {
       userId: '',
       activityId: '',
       activityApiId: '',
-      reviewed: ''
+      reviewed: '',
+      username: ''
     }
 
   }
@@ -66,7 +67,8 @@ class ReviewForm extends Component {
       this.setState({
         body: parsedResponse.data.body,
         rating: Number(parsedResponse.data.rating),
-        reviewed: true
+        reviewed: true,
+        username: parsedResponse.data.username
       })
 
       
@@ -101,7 +103,7 @@ class ReviewForm extends Component {
     let display = ''
     if (this.state.reviewed) {
       display = (<div className='reviewedData'>
-        <p className='reviewP'>"{this.state.body}"</p>
+        <p className='reviewP'>"{this.state.body}" - {this.state.username}</p>
         <p className=''>Rating: {this.state.rating}</p>
         <p>-----------------------</p>
       </div>)

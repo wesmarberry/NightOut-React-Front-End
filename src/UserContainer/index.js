@@ -149,6 +149,7 @@ deleteUser = async () => {
     try {
       const updatedUser = await fetch(process.env.REACT_APP_API_CALL + 'user/' + this.props.userId + '/edit', {
         method: 'PUT',
+        credentials: 'include',
         body: JSON.stringify(this.state.userToEdit),
         headers: {
           'Content-Type': 'application/json'
@@ -231,7 +232,7 @@ deleteUser = async () => {
       return(
         <li key={i} className='activity-li'>
           <div>
-            <p className='clickable-li' onClick={this.showActivity} id={activity._id}> Name: {activity.name}</p>
+            <p className='link' onClick={this.showActivity} id={activity._id}> Name: {activity.name}</p>
             <p>Type: {activity.type}</p><br/>
           </div>
           <ReviewForm activity={activity}/>

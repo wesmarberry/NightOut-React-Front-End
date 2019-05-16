@@ -213,7 +213,7 @@ class NewNightForm extends Component {
       display = (
 
         <div>
-          <p onClick={this.props.resetPage}>Home</p>
+          <p className='link' onClick={this.props.resetPage}>Home</p>
           <form onSubmit={this.handleSubmit}>
             <div className="radio-container">
                 <h2>How Far Are You Willing To Go? (miles)</h2>

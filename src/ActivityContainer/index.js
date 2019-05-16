@@ -39,7 +39,7 @@ class ActivityContainer extends Component {
 		const renderReviews = reviews.map((review, i) => {
 			return(
 				<li key={i}>
-					{review.body}<br/>
+					{review.body} - {review.username}<br/>
 					Rating: {review.rating}<br/>
 				</li>
 
@@ -49,18 +49,23 @@ class ActivityContainer extends Component {
 
 		return(
 			<div>
-				<p onClick={this.props.resetPage}>Home</p>
+				<div className='activityHeaderContainer'>
+					<p className='link' onClick={this.props.resetPage}>Home</p>
+					<h5>Overall Rating: {this.findOverallRating(reviews)}</h5>
+				</div>
 				<div>
-				<h2>Overall Rating: {this.findOverallRating(reviews)}</h2>
-				<h1>{this.props.activityToShow.data.name}</h1>
-				<p>Type of Place: {this.props.activityToShow.data.type}</p>
-				<p>Address: {this.props.activityToShow.data.address}</p>
-				<p>Price Level: {this.props.activityToShow.data.price_level}</p>
-				<h2>Reviews</h2>
-
-				<ul>
-					{renderReviews}
-				</ul>
+				<h1 className='activityHeader'>{this.props.activityToShow.data.name}</h1>
+				<p>Type of Place: {this.props.activityToShow.data.type}<br/>
+				Address: {this.props.activityToShow.data.address}<br/>
+				Price Level: {this.props.activityToShow.data.price_level}</p>
+				<h3>Reviews</h3>
+				<div className='centerDiv'>
+					<div className='reviewContainer'>
+						<ul className='activityList'>
+							{renderReviews}
+						</ul>
+					</div>
+				</div>
 				<CoolMap activityLocations={activityForMap} session={this.props.session} position={this.props.position}/>
 				</div>
 			</div>
