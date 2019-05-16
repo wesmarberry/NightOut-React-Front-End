@@ -101,6 +101,11 @@ body {
   word-wrap: break-word;
 }
 
+.reviewActivityList {
+  margin-left: -15px;
+  margin-right: 15px;
+}
+
 .reviewContainer {
   height: 100px;
   width: 80%;

@@ -33,7 +33,7 @@ class AcceptScreen extends Component {
 		return(
 			<div>
 				<div>
-				<ul className='activityList'>
+				<ul className='activityList reviewActivityList'>
 					{activities}
 				</ul>
 				<div className='buttonContainer' id='acceptButtonContainer'>

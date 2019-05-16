@@ -101,7 +101,7 @@ class CoolMap extends Component {
     console.log('<================>');
     console.log(position);
     console.log('<================>');
-    
+
     console.log('<================>');
 
 
@@ -114,7 +114,7 @@ class CoolMap extends Component {
           initialCenter={position}
           zoom={this.state.zoom}
           google={this.props.google}
-          style={{width: '80%', height: "300px", left: '10%', 'border-radius': '10px', 'box-shadow': '5px 5px black'}}
+          style={{width: '80%', height: "300px", left: '10%', 'borderRadius': '10px', 'boxShadow': '5px 5px black'}}
           
           onClick={this.onMapClicked}
         >
@@ -129,9 +129,11 @@ class CoolMap extends Component {
           name={this.props.activityLocations[0].name}
           position={this.props.activityLocations[0].location}
           icon={{
-            url: '/blue-dot.png'
+            url: '/blue-dot.png',
+            scaledSize: new this.props.google.maps.Size(50,50)
+
           }}
-          style={{'z-index': '5'}}
+          style={{zIndex: '5'}}
           onClick={this.onMarkerClick}
         />
         
@@ -154,7 +156,7 @@ class CoolMap extends Component {
           initialCenter={this.props.position}
           zoom={this.state.zoom}
           google={this.props.google}
-          style={{width: '80%', height: "300px", left: '10%', 'border-radius': '10px', 'box-shadow': '5px 5px black'}}
+          style={{width: '80%', height: "300px", left: '10%', 'borderRadius': '10px', 'boxShadow': '5px 5px black'}}
           
           onClick={this.onMapClicked}
         >
@@ -169,18 +171,22 @@ class CoolMap extends Component {
           name={this.props.activityLocations[0].name}
           position={this.props.activityLocations[0].location}
           icon={{
-            url: '/blue-dot.png'
+            url: '/blue-dot.png',
+            scaledSize: new this.props.google.maps.Size(50,50)
+
           }}
-          style={{'z-index': '5'}}
+          style={{zIndex: '5'}}
           onClick={this.onMarkerClick}
         />
         <Marker 
           name={this.props.activityLocations[1].name}
           position={this.props.activityLocations[1].location}
           icon={{
-            url: '/blue-dot.png'
+            url: '/blue-dot.png',
+            scaledSize: new this.props.google.maps.Size(50,50)
+
           }}
-          style={{'z-index': '5'}}
+          style={{zIndex: '5'}}
           onClick={this.onMarkerClick}
         />
         <InfoWindow
@@ -203,7 +209,7 @@ class CoolMap extends Component {
           initialCenter={this.props.position}
           zoom={this.state.zoom}
           google={this.props.google}
-          style={{width: '80%', height: "300px", left: '10%', 'border-radius': '10px', 'box-shadow': '5px 5px black'}}
+          style={{width: '80%', height: "300px", left: '10%', 'borderRadius': '10px', 'boxShadow': '5px 5px black'}}
           
           onClick={this.onMapClicked}
         >
@@ -218,27 +224,33 @@ class CoolMap extends Component {
           name={this.props.activityLocations[0].name}
           position={this.props.activityLocations[0].location}
           icon={{
-            url: '/blue-dot.png'
+            url: '/blue-dot.png',
+            scaledSize: new this.props.google.maps.Size(50,50)
+
           }}
-          style={{'z-index': '5'}}
+          style={{zIndex: '5'}}
           onClick={this.onMarkerClick}
         />
         <Marker 
           name={this.props.activityLocations[1].name}
           position={this.props.activityLocations[1].location}
           icon={{
-            url: '/blue-dot.png'
+            url: '/blue-dot.png',
+            scaledSize: new this.props.google.maps.Size(50,50)
+
           }}
-          style={{'z-index': '5'}}
+          style={{zIndex: '5'}}
           onClick={this.onMarkerClick}
         />
         <Marker 
           name={this.props.activityLocations[2].name}
           position={this.props.activityLocations[2].location}
           icon={{
-            url: '/blue-dot.png'
+            url: '/blue-dot.png',
+            scaledSize: new this.props.google.maps.Size(50,50)
+
           }}
-          style={{'z-index': '5'}}
+          style={{zIndex: '5'}}
           onClick={this.onMarkerClick}
         />
         <InfoWindow
