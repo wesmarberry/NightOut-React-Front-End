@@ -64,7 +64,7 @@ body {
 .overflowContainer {
   height: 200px;
   width: 80%;
-  overflow: auto;
+  overflow: scroll;
   border-radius: 10px;
   box-shadow: 5px 5px black;
   background-color: #6B7A8F;
