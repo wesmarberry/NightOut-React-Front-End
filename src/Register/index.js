@@ -90,7 +90,7 @@ class Register extends Component {
         if (this.state.lat !== 0) {
           display = <input type="submit" value="Register" />
         } else {
-          display = <p>...Getting Your Location...<br/>*Location Services Must be Enabled to Enable Registration</p>
+          display = <p className='redMessage'>...Getting Your Location...<br/>*Location Services Must be Enabled to Enable Registration</p>
         }
 
     return(

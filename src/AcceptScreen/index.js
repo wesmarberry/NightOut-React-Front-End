@@ -33,11 +33,13 @@ class AcceptScreen extends Component {
 		return(
 			<div>
 				<div>
-				<ul>
+				<ul className='activityList'>
 					{activities}
 				</ul>
-				<button type='submit' onClick={this.props.acceptNight}>Accept</button>
-				<button type='submit' onClick={this.decline}>Decline</button>
+				<div className='buttonContainer' id='acceptButtonContainer'>
+					<button className='largeButton' type='submit' onClick={this.props.acceptNight}>Accept</button>
+					<button className='largeButton' type='submit' onClick={this.decline}>Decline</button>
+				</div>
 
 				</div>
 				<CoolMap activityLocations={this.props.foundActivities} session={this.props.session} position={this.props.position}/>

@@ -27,7 +27,7 @@ class EditUser extends Component {
 					Email:
 					<input type='text' name='email' onChange={this.props.handleFormChange} value={this.props.userToEdit.email}/>
 					</label>
-					<input type="submit" value='Update User'/>
+					<input className='largeButton' type="submit" value='Update User'/>
 				</form>
 			</div>
 

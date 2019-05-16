@@ -222,7 +222,7 @@ class NewNightForm extends Component {
           </div>
           <form onSubmit={this.handleSubmit}>
             <div className="radio-container">
-                <h2>How Far Are You Willing To Go? (miles)</h2>
+                <h4>How Far Are You Willing To Go? (miles)</h4>
                 <label for='0.5'>0.5:</label>
                 <input type='radio' id='0.5' name='distance' value='0.5' onChange={this.handleChange}/>
                 <label for='1'>1:</label>
@@ -237,8 +237,8 @@ class NewNightForm extends Component {
                 <input type='radio' id='3' name='distance' value='3' onChange={this.handleChange}/>
                 
             </div>
-            <div>
-              <h2>Activity 1</h2>
+            <div className='activityFormContainer'>
+              <h4>Activity 1</h4>
               Price Level:
               <label for='11'>1:</label>
               <input type='radio' className='p1' id='11' name='priceLevel1' value='1' onChange={this.handleChange}/>
@@ -261,8 +261,8 @@ class NewNightForm extends Component {
 
 
             </div>
-            <div>
-              <h2>Activity 2</h2>
+            <div className='activityFormContainer'>
+              <h4>Activity 2</h4>
               Price Level:
               <label for='12'>1:</label>
               <input type='radio' className='p2' id='12' name='priceLevel2' value='1' onChange={this.handleChange}/>
@@ -283,8 +283,8 @@ class NewNightForm extends Component {
 
 
             </div>
-            <div>
-              <h2>Activity 3</h2>
+            <div className='activityFormContainer'>
+              <h4>Activity 3</h4>
               Price Level:
               <label for='13'>1:</label>
               <input type='radio' className='p3' id='13' name='priceLevel3' value='1' onChange={this.handleChange}/>
@@ -306,8 +306,8 @@ class NewNightForm extends Component {
 
 
             </div>
-            <button className='newOutButton' type='submit'>Generate Night</button><br/>
-            <p>{this.state.message}</p>
+            <button className='newOutButton' type='submit'>Find Place(s) To Go</button><br/>
+            <p className='redMessage'>{this.state.message}</p>
 
           </form>
         </div>

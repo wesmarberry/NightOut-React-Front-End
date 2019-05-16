@@ -261,7 +261,7 @@ deleteUser = async () => {
               {this.state.modalShowing ? <EditUser closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} userToEdit={this.state.userToEdit}/> : <button className='largeButton' type='submit' onClick={this.showModal}>Edit User</button>}
               <button className='largeButton' type="submit" onClick={this.logout}>Log Out</button>
             </div>
-            <h4>Experiences Going Out</h4>
+            <h4>Your Experiences Going Out</h4>
             <div className='centerDiv'>
               <div className='overflowContainer'>
                 <ul className='activityList'>

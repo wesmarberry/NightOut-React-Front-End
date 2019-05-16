@@ -92,7 +92,7 @@ class Login extends Component {
         if (this.state.lat !== 0) {
           display = <input type="submit" value="Log In" />
         } else {
-          display = <p>...Getting Your Location...<br/>*Location Services Must be Enabled to Access Login</p>
+          display = <p className='redMessage'>...Getting Your Location...<br/>*Location Services Must be Enabled to Access Login</p>
         }
 
     return(
