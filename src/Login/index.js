@@ -98,7 +98,7 @@ class Login extends Component {
   render() {
         let display = ''
         if (this.state.lat !== 0) {
-          display = <input className='largeButton' type="submit" value="Log In" />
+          display = <button className='largeButton' type="submit">Login</button>
         } else {
           display = <p className='redMessage'>...Getting Your Location...<br/>*Location Services Must be Enabled to Access Login<br/></p>
         }

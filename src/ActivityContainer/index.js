@@ -66,7 +66,7 @@ class ActivityContainer extends Component {
 						</ul>
 					</div>
 				</div>
-				<CoolMap activityLocations={activityForMap} session={this.props.session} position={this.props.position}/>
+				<CoolMap activityLocations={activityForMap} session={this.props.session} position={this.props.position} isActivityPage={this.props.isActivityPage}/>
 				</div>
 			</div>
 

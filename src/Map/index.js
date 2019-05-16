@@ -89,13 +89,29 @@ class CoolMap extends Component {
         
       
     })
+
+    let position = ''
+    if (this.props.isActivityPage) {
+      position = this.props.activityLocations[0].location
+    } else {
+      position = this.props.position
+    }
+    console.log('<================>');
+    console.log(this.props.isActivityPage);
+    console.log('<================>');
+    console.log(position);
+    console.log('<================>');
+    
+    console.log('<================>');
+
+
     let display = '';
     if (this.props.activityLocations.length === 1) {
       
       display = <div className='centerDiv mapDiv'>
         <Map
           bootstrapURLKeys={{ key: process.env.REACT_APP_API_KEY}}
-          initialCenter={this.props.position}
+          initialCenter={position}
           zoom={this.state.zoom}
           google={this.props.google}
           style={{width: '80%', height: "300px", left: '10%', 'border-radius': '10px', 'box-shadow': '5px 5px black'}}
