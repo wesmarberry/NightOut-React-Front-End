@@ -70,7 +70,7 @@ class CoolMap extends Component {
 
   render() {
     console.log('========================');
-    console.log(this.props.activityLocations[0].location.lat);
+
     const markers = this.props.activityLocations.map((activity, i) => {
       return(
 

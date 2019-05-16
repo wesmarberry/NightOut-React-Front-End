@@ -256,6 +256,11 @@ deleteUser = async () => {
             <h1 className='header'>GoOut!</h1>
             <p className='description'>Decide Where You're Going Now</p>
             <h2>{this.state.usernameDisplay}</h2>
+            <div className='buttonContainer'>
+              <button className='largeButton' type="submit" onClick={this.deleteUser}>Delete Account</button>
+              {this.state.modalShowing ? <EditUser closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} userToEdit={this.state.userToEdit}/> : <button className='largeButton' type='submit' onClick={this.showModal}>Edit User</button>}
+              <button className='largeButton' type="submit" onClick={this.logout}>Log Out</button>
+            </div>
             <h4>Experiences Going Out</h4>
             <div className='centerDiv'>
               <div className='overflowContainer'>
@@ -264,10 +269,8 @@ deleteUser = async () => {
                 </ul>
               </div>  
             </div>
-            {this.state.modalShowing ? <EditUser closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} userToEdit={this.state.userToEdit}/> : <button type='submit' onClick={this.showModal}>Edit User</button>} <br/>
-            <button type='submit' onClick={this.showNewActivityForm}>New Night Out</button>
-            <button type="submit" onClick={this.deleteUser}>Delete Account</button>
-            <button type="submit" onClick={this.logout}>Log Out</button>
+            <button className='newOutButton' type='submit' onClick={this.showNewActivityForm}>Go Out Again</button>
+            
           </div>
           )
       } else {

@@ -33,7 +33,6 @@ class AcceptScreen extends Component {
 		return(
 			<div>
 				<div>
-				<h2>Activities</h2>
 				<ul>
 					{activities}
 				</ul>
