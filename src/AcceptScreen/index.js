@@ -37,6 +37,7 @@ class AcceptScreen extends Component {
 				</ul>
 				<button type='submit' onClick={this.props.acceptNight}>Accept</button>
 				<button type='submit' onClick={this.props.declineNight.bind(null, this.props.foundActivities)}>Decline</button>
+				<p>{this.props.session.apiCall}</p>
 				</div>
 				<CoolMap activityLocations={this.props.foundActivities} session={this.props.session}/>
 			</div>
