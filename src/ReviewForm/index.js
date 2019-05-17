@@ -130,7 +130,7 @@ class ReviewForm extends Component {
             </div>
             <button className='largeButton' type="submit">Submit Review</button>
           </form>
-          <button className='largeButton' id={this.state.activityId} onClick={this.props.deleteActivity}>I Didn't Go Here</button>
+          
         </div>)
     }
 
