@@ -19,23 +19,24 @@ class NewNightForm extends Component {
     }
 
   }
-
+  // sets the userId when the component loads
   componentDidMount = () => {
     this.setState({
       userId: this.props.userId
     })
     
   }
-  
+  // sets the type and priceLevel state properties when the user fills out the form
   handleChange = (e) => {
     console.log(e.currentTarget.data_id);
     const stateCopy = this.state
+    // sets the distance parameter for the API call
     if (e.currentTarget.name === 'distance') {
       this.setState({
       [e.currentTarget.name]: Number(e.currentTarget.value)
     })
     }
-
+    // sets the value of the array item based on the className and updates state
     if (e.currentTarget.className === 't1') {
       console.log('ran t1');
       stateCopy.type[0] = e.currentTarget.value
@@ -58,7 +59,7 @@ class NewNightForm extends Component {
         type: stateCopy.type
       })
     }
-
+    // sets the pricelevel state property based on the className of the form
     if (e.currentTarget.className === 'p1') {
       console.log('ran t1');
       stateCopy.priceLevel[0] = e.currentTarget.value
@@ -86,7 +87,8 @@ class NewNightForm extends Component {
   }
 
   
-
+  // when the user submits the form the create API call is made
+  // the number of activities that are filled out are the number of queries the API call makes
   handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -104,13 +106,14 @@ class NewNightForm extends Component {
 
       const parsedResponse = await loginResponse.json();
       console.log(parsedResponse.status);
-
+      // if the parameters are not fully filled out then it returns an error message on the screen
       if (parsedResponse.data.length === 0) {
         console.log('running error');
         this.setState({
           message: 'No results found with the specified parameters. Please Try Again'
         })
-      } else {
+      } else {// if ther queries are successful then they are added to the state and 
+              // the user is redirected to the AcceptScreen component
         console.log('running set state');
         this.setState({
           foundActivities: parsedResponse.data,
@@ -120,18 +123,7 @@ class NewNightForm extends Component {
       }
     
 
-      // if (parsedResponse.data === 'registration successful') {
-      //   console.log('registration successful');
-
-      // }
-      
-      // this.setState({
-      //   username: parsedResponse.session.username,
-      //   email: parsedResponse.session.email,
-      //   userId: parsedResponse.session.userDbId,
-      //   logged: true
-      // })
-      
+     
 
 
 
@@ -141,7 +133,8 @@ class NewNightForm extends Component {
   }
 
 
-
+  // if night is accepted on AcceptScreen component the state is passed up so that the user homepage is 
+  // rendered (UserContainer component)
   acceptNight = () => {
 
     this.setState({
@@ -155,7 +148,8 @@ class NewNightForm extends Component {
     this.props.resetPage()
 
   }
-  
+  // if the activites are declined the generated activites are deleted both from the users activites and 
+  // the database in general
   declineNight = async (arrToRemove) => {
     const userId = this.props.userId
     console.log(userId);
@@ -173,7 +167,7 @@ class NewNightForm extends Component {
       const parsedResponse = await loginResponse.json();
       console.log(parsedResponse);
 
-
+      // state is reset for the NewNightForm component
       this.setState({
         distance: '',
         type: [],
@@ -185,19 +179,7 @@ class NewNightForm extends Component {
       })
     
 
-      // if (parsedResponse.data === 'registration successful') {
-      //   console.log('registration successful');
-
-      // }
       
-      // this.setState({
-      //   username: parsedResponse.session.username,
-      //   email: parsedResponse.session.email,
-      //   userId: parsedResponse.session.userDbId,
-      //   logged: true
-      // })
-      
-
 
 
     } catch (err) {
@@ -208,6 +190,7 @@ class NewNightForm extends Component {
   render() {
 
     console.log(this.state);
+    // if the activity was not accepted or the component has initially loaded display the form
     let display = ''
     if (this.state.showAccept === false) {
       display = (
@@ -237,16 +220,17 @@ class NewNightForm extends Component {
                 <input type='radio' id='3' name='distance' value='3' onChange={this.handleChange}/>
                 
             </div>
+            <p className='label'>Fill Out Up to 3 Activities</p>
             <div className='activityFormContainer'>
               <h4>Activity 1</h4>
-              Price Level:
-              <label for='11'>1:</label>
+              Max Price Range:
+              <label for='11'>$:</label>
               <input type='radio' className='p1' id='11' name='priceLevel1' value='1' onChange={this.handleChange}/>
-              <label for='21'>2:</label>
+              <label for='21'>$$:</label>
               <input type='radio' className='p1' id='21' name='priceLevel1' value='2' onChange={this.handleChange}/>
-              <label for='31'>3:</label>
+              <label for='31'>$$$:</label>
               <input type='radio' className='p1' id='31' name='priceLevel1' value='3' onChange={this.handleChange}/>
-              <label for='41'>4:</label>              
+              <label for='41'>$$$$:</label>              
               <input type='radio' className='p1' id='41' name='priceLevel1' value='4' onChange={this.handleChange}/><br/>
 
               
@@ -263,14 +247,14 @@ class NewNightForm extends Component {
             </div>
             <div className='activityFormContainer'>
               <h4>Activity 2</h4>
-              Price Level:
-              <label for='12'>1:</label>
+              Max Price Range:
+              <label for='12'>$:</label>
               <input type='radio' className='p2' id='12' name='priceLevel2' value='1' onChange={this.handleChange}/>
-              <label for='2'>2:</label>
+              <label for='2'>$$:</label>
               <input type='radio' className='p2' id='22' name='priceLevel2' value='2' onChange={this.handleChange}/>
-              <label for='32'>3:</label>
+              <label for='32'>$$$:</label>
               <input type='radio' className='p2' id='32' name='priceLevel2' value='3' onChange={this.handleChange}/>
-              <label for='42'>4:</label>
+              <label for='42'>$$$$:</label>
               <input type='radio' className='p2' id='42' name='priceLevel2' value='4' onChange={this.handleChange}/><br/>
 
               <label for='Bar2'>Bar</label>
@@ -285,14 +269,14 @@ class NewNightForm extends Component {
             </div>
             <div className='activityFormContainer'>
               <h4>Activity 3</h4>
-              Price Level:
-              <label for='13'>1:</label>
+              Max Price Range:
+              <label for='13'>$:</label>
               <input type='radio' className='p3' id='13' name='priceLevel3' value='1' onChange={this.handleChange}/>
-              <label for='23'>2:</label>
+              <label for='23'>$$:</label>
               <input type='radio' className='p3' id='23' name='priceLevel3' value='2' onChange={this.handleChange}/>
-              <label for='33'>3:</label>
+              <label for='33'>$$$:</label>
               <input type='radio' className='p3' id='33' name='priceLevel3' value='3' onChange={this.handleChange}/>
-              <label for='43'>4:</label>
+              <label for='43'>$$$$:</label>
               <input type='radio' className='p3' id='43' name='priceLevel3' value='4' onChange={this.handleChange}/><br/>
               
 

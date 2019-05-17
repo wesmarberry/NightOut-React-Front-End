@@ -16,7 +16,7 @@ class Login extends Component {
     }
 
   }
-
+  // when the component is loaded the user's lat and lng is retreived from the client
   componentDidMount = () => {
     navigator.geolocation.getCurrentPosition((data) => {
       const latLong = data
@@ -31,7 +31,7 @@ class Login extends Component {
     })
     
   }
-  
+  // handles login form changes
   handleChange = (e) => {
     
     this.setState({
@@ -40,7 +40,8 @@ class Login extends Component {
   }
 
   
-
+  // when the user clicks login a call is made to the API database to see if the user exists and
+  // if the  password is correct
   handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -62,17 +63,17 @@ class Login extends Component {
 
 
 
-      
+      // if the error message is returned then the message is displayed on the screen
       if (parsedResponse.data === 'username or password is incorrect') {
         this.setState({
           message: parsedResponse.data
         })
-      } else if (parsedResponse.data === "username or password does not exist") {
+      } else if (parsedResponse.data === "username or password does not exist") {// if the error message is returned then the message is displayed on the screen
         this.setState({
           message: parsedResponse.data
         })
       } else {
-        this.setState({
+        this.setState({// if login is successful the user is redirected to the user homepage and state is lifted up
           username: parsedResponse.session.username,
           userId: parsedResponse.session.userDbId,
           email: parsedResponse.session.email,
@@ -96,8 +97,9 @@ class Login extends Component {
   
 
   render() {
+
         let display = ''
-        if (this.state.lat !== 0) {
+        if (this.state.lat !== 0) {// the login button is not displayed until the user's location is retrieved
           display = <button className='largeButton' type="submit">Login</button>
         } else {
           display = <p className='redMessage'>...Getting Your Location...<br/>*Location Services Must be Enabled to Access Login<br/></p>

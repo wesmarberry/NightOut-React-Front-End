@@ -15,7 +15,7 @@ class CoolMap extends Component {
         zoom: 12
       };
   }
- 
+  // sets the user lat and lng when the component loads
   componentDidMount = () => {
     console.log(this.props);
     this.setState({
@@ -24,33 +24,7 @@ class CoolMap extends Component {
     })
   }
 
-  // getSession = async () => {
-  //   try {
 
-  //     const response = await fetch('http://localhost:3679/api/v1/user/getInfo', {
-  //       method: 'GET',
-  //       credentials: 'include', // on every request we have to send the cookie
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       }
-  //     })
-
-  //     const parsedResponse = await response.json();
-  //     console.log(parsedResponse);
-
-      
-
-
-      
-
-
-    
-
-
-  //   } catch (err) {
-
-  //   }
-  // }
 
   onMarkerClick = (props, marker, e) =>
     this.setState({

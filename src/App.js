@@ -7,6 +7,7 @@ import Register from './Register'
 import UserContainer from './UserContainer'
 
 class App extends Component {
+  // sets initial conditions for log in
   constructor() {
     super()
     this.state = {
@@ -18,7 +19,7 @@ class App extends Component {
       position: ''
     }
   }
-
+  // function for setting the state with the user that just logged in or registered
   setUser = (username, userId, email, logged, lat, lng) => {
     console.log('ran setUser with' + username + ' ' + userId);
     this.setState({
@@ -32,13 +33,13 @@ class App extends Component {
       }
     })
   }
-
+  // when the user clicks on the register button the register component is rendered
   showRegister = () => {
     this.setState({
       needToRegister: true
     })
   }
-
+  // function to handle log out and reset to login conditions
   resetToLogin = () => {
     this.setState({
       username: '',
@@ -53,11 +54,12 @@ class App extends Component {
 
     console.log(this.state);
     let display = '' 
+    // if login successful render the user home page ie. "UserContainer" component
     if (this.state.logged) {
       display = <UserContainer resetToLogin={this.resetToLogin} username={this.state.username} userId={this.state.userId} email={this.state.email} resetToLogin={this.resetToLogin} position={this.state.position}/>
-    } else if (this.state.needToRegister) {
+    } else if (this.state.needToRegister) { // if the user needs to register, render the register component
       display = <Register setUser={this.setUser} resetToLogin={this.resetToLogin}/>
-    } else {
+    } else {// if the user if not logged in or needs to register, display the log in component
       display = <Login setUser={this.setUser} showRegister={this.showRegister}/>
     }
 

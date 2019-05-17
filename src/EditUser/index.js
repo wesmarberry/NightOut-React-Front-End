@@ -15,7 +15,7 @@ class EditUser extends Component {
 
 
 	render() {
-	
+		// edit form for the EditUser Component
 		return(
 			<div>
 				<form onSubmit={this.props.closeAndEdit}>

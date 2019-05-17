@@ -14,12 +14,13 @@ class Register extends Component {
     }
 
   }
-
+  // when the component loads the location is retreived from the browser and the state is set with 
+  // the users current location
   componentDidMount = () => {
     navigator.geolocation.getCurrentPosition((data) => {
       const latLong = data
       console.log(latLong);
-      // console.log(latLong.coords.latitude);
+      
       this.setState({
         lat: latLong.coords.latitude,
         lng: latLong.coords.longitude
@@ -29,7 +30,7 @@ class Register extends Component {
     })
     
   }
-  
+  // handles change in the register form
   handleChange = (e) => {
     
     this.setState({
@@ -38,7 +39,7 @@ class Register extends Component {
   }
 
   
-
+  // on submitting registration a user is created with the specified parameters including location
   handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -59,14 +60,14 @@ class Register extends Component {
 
 
 
-
+      // if all of the fields arent filled out then the error message is displayed on the page
       if (parsedResponse.data === 'Please fill out all required fields') {
         this.setState({
           message: parsedResponse.data
         })
 
 
-      } else {
+      } else { // sets the state to logged in so the user home page renders and runs the setUser property which lifts up the state
         this.setState({
           username: parsedResponse.session.username,
           email: parsedResponse.session.email,
@@ -93,7 +94,8 @@ class Register extends Component {
   render() {
 
         let display = ''
-        if (this.state.lat !== 0) {
+        if (this.state.lat !== 0) {// if the users location is not found then registration is not available
+                                  // users must have location services enabled to register
           display = <input className='largeButton' type="submit" value="Register" />
         } else {
           display = <p className='redMessage'>...Getting Your Location...<br/>*Location Services Must be Enabled to Enable Registration</p>

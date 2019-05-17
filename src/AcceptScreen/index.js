@@ -10,7 +10,7 @@ class AcceptScreen extends Component {
 		}
 	}
 
-
+	// passes up state if the user declines the activites
 	decline = () => {
 		this.props.declineNight(this.props.foundActivities)
 	}
@@ -18,7 +18,7 @@ class AcceptScreen extends Component {
 
 	render() {
 		console.log(this.state);
-
+		// creates the JSX for the activities from the API call to render
 		const activities = this.props.foundActivities.map((activity, i) => {
 			return (
 				<li key={i}>

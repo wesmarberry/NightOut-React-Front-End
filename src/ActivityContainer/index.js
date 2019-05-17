@@ -11,16 +11,17 @@ class ActivityContainer extends Component {
 			renderReviews: ''
 		}
 	}
-
+	// when the component is loaded all the reviews that have been written about this place are loaded
+	// and rendered
 	componentDidMount = async () => {
 		const reviews = []
-
+		// pushes all reviews that have been written about this activity to the reviews array
 		for (let i = 0; i < this.props.activityToShow.matchingActivityData.length; i++) {
 			for (let j = 0; j < this.props.activityToShow.matchingActivityData[i].reviews.length; j++) {
 				reviews.push(this.props.activityToShow.matchingActivityData[i].reviews[j])
 			}
 		}
-
+		// generates the JSX to render
 		const renderReviews = await reviews.map((review, i) => {
 			return(
 				<li className='activityReviewLi' key={i}>
@@ -31,7 +32,7 @@ class ActivityContainer extends Component {
 
 				)
 		})
-
+		// calculates the overall rating of the activity 
 		let rating = await this.findOverallRating(reviews)
 		rating = rating.toString()
 
@@ -44,7 +45,7 @@ class ActivityContainer extends Component {
 		// this.updateOverallRating(rating)
 	}
 
-
+	// fucntion to calculate the overall rating of the activity based on all of the reviews
 	findOverallRating = (reviews) => {
 		let overallNum = 0
 		for (let i = 0; i < reviews.length; i++) {
@@ -58,7 +59,7 @@ class ActivityContainer extends Component {
 		}
 	}
 
-
+	// API call to update the overall rating of the activity
 	updateOverallRating = async (rating) => {
 		try {
 			const response = await fetch(process.env.REACT_APP_API_CALL + 'activity/' + this.props.activityToShow.data._id + '/overallRating', {
@@ -84,6 +85,7 @@ class ActivityContainer extends Component {
 
 	render() {
 		console.log(this.props.session);
+		// puts the single activity into an array so that the Map component can accept the property without mutating it
 		const activityForMap = [this.props.activityToShow.data]
 
 
