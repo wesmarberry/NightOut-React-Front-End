@@ -46,6 +46,7 @@ class AcceptScreen extends Component {
 				</div>
 
 				</div>
+				<p className='message'>Only like one of your activities? Don't worry! Hit accept and the others can be deleted from your home page!</p>
 				<CoolMap activityLocations={this.props.foundActivities} session={this.props.session} position={this.props.position}/>
 			</div>
 

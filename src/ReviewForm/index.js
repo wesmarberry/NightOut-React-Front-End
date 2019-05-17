@@ -70,7 +70,7 @@ class ReviewForm extends Component {
         reviewed: true,
         username: parsedResponse.data.username
       })
-
+      this.props.resetPage()
       
 
       // this.setState({
@@ -99,7 +99,7 @@ class ReviewForm extends Component {
 
   render() {
 
-    console.log(this.props.activity);
+
     let display = ''
     if (this.state.reviewed) {
       display = (<div className='reviewedData'>
@@ -108,7 +108,10 @@ class ReviewForm extends Component {
         <p>-----------------------</p>
       </div>)
     } else {
-      display = (<form className='reviewForm' onSubmit={this.handleSubmit}>
+      display = (
+        <div>
+
+          <form className='reviewForm' onSubmit={this.handleSubmit}>
             <input type="text" name="body" placeholder="Review Activity" value={this.state.body} onChange={this.handleChange}/><br/>
            <div className="radio-container">
                 
@@ -126,7 +129,9 @@ class ReviewForm extends Component {
                 <label for='5'>5</label>
             </div>
             <button className='largeButton' type="submit">Submit Review</button>
-          </form>)
+          </form>
+          <button className='largeButton' id={this.state.activityId} onClick={this.props.deleteActivity}>I Didn't Go Here</button>
+        </div>)
     }
 
     return(

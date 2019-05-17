@@ -228,12 +228,36 @@ class UserContainer extends Component {
 
   }
 
+  deleteActivity = async (e) => {
+    console.log(e.currentTarget);
+    try {
+      const response = await fetch(process.env.REACT_APP_API_CALL + 'activity/' + e.currentTarget.id, {
+        method: 'DELETE',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+
+
+      })
+
+      const parsedResponse = await response.json();
+      console.log(parsedResponse);
+      
+
+      await this.resetPage()
+
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
 
   render() {
 
 
-    console.log(this.state);
+
     // creates an array of Li's that display all of the user's activity names and types
     // the name <p> is clickable to show the ActivityContainer component for that activity
     const activities = this.state.userActivities.map((activity, i) => {
@@ -244,7 +268,8 @@ class UserContainer extends Component {
             <p className='link' onClick={this.showActivity} id={activity._id}> Name: {activity.name}</p>
             <p>Type: {activity.type}</p><br/>
           </div>
-          <ReviewForm activity={activity}/>
+          <ReviewForm activity={activity} deleteActivity={this.deleteActivity} resetPage={this.resetPage}/>
+
 
         </li>
 
