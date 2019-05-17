@@ -22,7 +22,7 @@ class ActivityContainer extends Component {
 			}
 		}
 		// generates the JSX to render
-		const renderReviews = await reviews.map((review, i) => {
+		let renderReviews = await reviews.map((review, i) => {
 			return(
 				<li className='activityReviewLi' key={i}>
 					"{review.body}" - {review.username}<br/>
@@ -35,7 +35,7 @@ class ActivityContainer extends Component {
 		// calculates the overall rating of the activity 
 		let rating = await this.findOverallRating(reviews)
 		rating = rating.toString()
-
+		renderReviews = renderReviews.reverse()
 
 		this.setState({
 			overallRating: rating,
@@ -55,7 +55,7 @@ class ActivityContainer extends Component {
 			return 'No Reviews'
 		} else {
 
-			return (overallNum / reviews.length)
+			return (overallNum / reviews.length).toFixed(1)
 		}
 	}
 
