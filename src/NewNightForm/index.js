@@ -10,6 +10,8 @@ class NewNightForm extends Component {
       distance: '',
       type: [],
       priceLevel: [],
+      maxPrice: 'true',
+      openNow: 'true',
       previousId: '',
       foundActivities: [],
       showAccept: false,
@@ -187,6 +189,13 @@ class NewNightForm extends Component {
     }
   }
 
+  handleMaxMinChange = (e) => {
+    console.log(e.currentTarget.value);
+    this.setState({
+      [e.currentTarget.name]: e.currentTarget.value
+    })
+  }
+
   render() {
 
     console.log(this.state);
@@ -220,10 +229,23 @@ class NewNightForm extends Component {
                 <input type='radio' id='3' name='distance' value='3' onChange={this.handleChange}/>
                 
             </div>
+            <br/>
+            <div>
+              Places Open Now? (default is yes)
+                <label for='yes'>Yes:</label>
+                <input type='radio' id='yes' name='openNow' value='true' onChange={this.handleMaxMinChange}/>
+                <label for='no'>No:</label>
+                <input type='radio' id='no' name='openNow' value='false' onChange={this.handleMaxMinChange}/><br/>
+              Max or Min Price? (default is max)
+                <label for='max'>Max:</label>
+                <input type='radio' id='max' name='maxPrice' value='true' onChange={this.handleMaxMinChange}/>
+                <label for='min'>Min:</label>
+                <input type='radio' id='min' name='maxPrice' value='false' onChange={this.handleMaxMinChange}/>
+            </div>
             <p className='label'>Fill Out Up to 3 Activities</p>
             <div className='activityFormContainer'>
               <h4>Activity 1</h4>
-              Max Price Range:
+              Max/Min Price Range:
               <label for='11'>$:</label>
               <input type='radio' className='p1' id='11' name='priceLevel1' value='1' onChange={this.handleChange}/>
               <label for='21'>$$:</label>
@@ -247,7 +269,7 @@ class NewNightForm extends Component {
             </div>
             <div className='activityFormContainer'>
               <h4>Activity 2</h4>
-              Max Price Range:
+              Max/Min Price Range:
               <label for='12'>$:</label>
               <input type='radio' className='p2' id='12' name='priceLevel2' value='1' onChange={this.handleChange}/>
               <label for='2'>$$:</label>
@@ -269,7 +291,7 @@ class NewNightForm extends Component {
             </div>
             <div className='activityFormContainer'>
               <h4>Activity 3</h4>
-              Max Price Range:
+              Max/Min Price Range:
               <label for='13'>$:</label>
               <input type='radio' className='p3' id='13' name='priceLevel3' value='1' onChange={this.handleChange}/>
               <label for='23'>$$:</label>

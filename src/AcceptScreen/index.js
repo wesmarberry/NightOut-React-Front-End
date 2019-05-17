@@ -20,12 +20,16 @@ class AcceptScreen extends Component {
 		console.log(this.state);
 		// creates the JSX for the activities from the API call to render
 		const activities = this.props.foundActivities.map((activity, i) => {
+			let moneySigns = ''
+			for (let i = 0; i < activity.price_level; i++) {
+				moneySigns += '$'
+			}
 			return (
 				<li key={i}>
 				<h2>Activity {i + 1}</h2>
 				Name: {activity.name}<br/>
 				Type of Place: {activity.type}<br/>
-				$$ Level: {activity.price_level}<br/>
+				Price Level: {moneySigns}<br/>
 				Address: {activity.address}
 				</li>
 				)
